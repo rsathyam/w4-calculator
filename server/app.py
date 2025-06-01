@@ -134,14 +134,6 @@ def calculate():
 
 @app.route("/generate-w4", methods=["POST", "OPTIONS"])
 def generate_w4():
-    if request.method == "OPTIONS":
-        # Manual preflight response
-        response = make_response()
-        response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
-        response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
-        return response
-
     data = request.json
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer)
@@ -255,7 +247,6 @@ def generate_w4():
         download_name="w4_form.pdf",
         mimetype="application/pdf",
     )
-    response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
     return response
 
 
