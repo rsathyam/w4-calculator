@@ -5,11 +5,7 @@ from flask_cors import CORS
 from reportlab.pdfgen import canvas
 
 app = Flask(__name__)
-CORS(
-    app,
-    resources={r"/*": {"origins": "http://localhost:3000"}},
-    supports_credentials=True,
-)
+CORS(app, origins=["https://w4-calculator.vercel.app"])
 
 
 import logging
