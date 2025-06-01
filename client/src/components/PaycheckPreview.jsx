@@ -10,10 +10,12 @@ export default function PaycheckPreview({ formData }) {
       return;
     }
 
+
     const fetchPreview = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:5001/calculate", {
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
+        const response = await fetch(`${backendUrl}/calculate`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),

@@ -3,7 +3,8 @@ import React from 'react';
 export default function DownloadW4({ formData }) {
   const handleDownload = async () => {
     try {
-      const response = await fetch("http://localhost:5001/generate-w4", {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
+      const response = await fetch(`${backendUrl}/generate-w4`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
