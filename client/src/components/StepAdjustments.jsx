@@ -58,11 +58,13 @@ export default function StepAdjustments({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="pretaxDeductions" className="block text-sm font-medium text-gray-700">
-          Pre-tax Contributions (e.g. 401(k), HSA)
-        </label>
+
         <CurrencyInput
-          label="Pre-tax Deductions"
+          label={
+            <label htmlFor="pretaxDeductions" className="block text-sm font-medium text-gray-700">
+              Pre-tax Contributions (e.g. 401(k), HSA)
+            </label>
+          }
           name="pretaxDeductions"
           value={form.pretaxDeductions}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
