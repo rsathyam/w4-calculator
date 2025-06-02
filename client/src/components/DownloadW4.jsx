@@ -1,5 +1,5 @@
 import React from 'react';
-import { generateW4Pdf } from "../utils/generateW4Pdf";
+import { generateW4Pdf } from "./utils/generateW4Pdf";
 
 export default function DownloadW4({ formData }) {
   return (
