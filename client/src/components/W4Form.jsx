@@ -108,13 +108,24 @@ export default function W4Form({ formData, setFormData }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <input
+              type="text"
               name="grossPay"
-              type="number"
-              placeholder="Gross Pay *"
-              value={formData.grossPay || ''}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={inputStyle('grossPay')}
+              inputMode="decimal"
+              value={
+                form.grossPay === '' ? '' : `$${Number(form.grossPay).toLocaleString(undefined, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                })}`
+              }
+              onChange={(e) => {
+                // Remove $ and commas, allow only digits and decimal
+                const raw = e.target.value.replace(/[^0-9.]/g, '');
+                if (raw === '' || /^\d*\.?\d{0,2}$/.test(raw)) {
+                  setForm({ ...form, grossPay: raw });
+                }
+              }}
+              placeholder="$0.00"
+              className="border border-gray-300 px-3 py-2 rounded w-full"
             />
             {errors.grossPay && <p className="text-sm text-red-600">{errors.grossPay}</p>}
           </div>
