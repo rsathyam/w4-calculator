@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function CurrencyInput({
   label,
@@ -8,20 +8,11 @@ export default function CurrencyInput({
   min = 0,
   max = Number.MAX_SAFE_INTEGER,
   helperText = '',
-  icon: Icon
+  icon: Icon,
 }) {
-  const [displayValue, setDisplayValue] = useState('');
   const [error, setError] = useState('');
 
-  // Sync displayed value with incoming prop
-  useEffect(() => {
-    if (value !== undefined && value !== null && !isNaN(value)) {
-      setDisplayValue(formatCurrency(value));
-    } else {
-      setDisplayValue('');
-    }
-  }, [value]);
-
+  // Format number with $ and commas
   const formatCurrency = (num) => {
     const parsed = parseFloat(num);
     if (isNaN(parsed)) return '';
@@ -31,30 +22,28 @@ export default function CurrencyInput({
     })}`;
   };
 
+  // Remove $ and commas and return raw float
   const parseCurrency = (str) => {
-    return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+    const cleaned = str.replace(/[^0-9.]/g, '');
+    return parseFloat(cleaned);
   };
 
   const handleChange = (e) => {
-    const raw = e.target.value.replace(/[^0-9.]/g, '');
-    setDisplayValue(raw);
-  };
+    const raw = e.target.value;
+    const numeric = parseCurrency(raw);
 
-  const handleBlur = () => {
-    const numericValue = parseCurrency(displayValue);
-    if (isNaN(numericValue)) {
-      setError('Please enter a valid number.');
+    if (isNaN(numeric)) {
+      onChange(name, 0);
       return;
     }
-    if (numericValue < min) {
-      setError(`Minimum is $${min}`);
-    } else if (numericValue > max) {
-      setError(`Maximum is $${max.toLocaleString()}`);
+
+    if (numeric < min || numeric > max) {
+      setError(`Enter a value between $${min} and $${max.toLocaleString()}`);
     } else {
       setError('');
     }
-    setDisplayValue(formatCurrency(numericValue));
-    onChange(name, numericValue);
+
+    onChange(name, numeric);
   };
 
   return (
@@ -66,9 +55,9 @@ export default function CurrencyInput({
       <input
         type="text"
         name={name}
-        value={displayValue}
+        inputMode="decimal"
+        value={value !== null && value !== undefined ? formatCurrency(value) : ''}
         onChange={handleChange}
-        onBlur={handleBlur}
         placeholder="$0.00"
         className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
           error
@@ -76,8 +65,12 @@ export default function CurrencyInput({
             : 'border-gray-300 focus:ring-blue-500'
         }`}
       />
-      {helperText && !error && <p className="text-xs text-gray-500 mt-1">{helperText}</p>}
-      {error && <p className="text-xs text-red-600 mt-1">{error}</p>}
+      {helperText && !error && (
+        <p className="text-xs text-gray-500 mt-1">{helperText}</p>
+      )}
+      {error && (
+        <p className="text-xs text-red-600 mt-1 font-medium">{error}</p>
+      )}
     </div>
   );
 }
