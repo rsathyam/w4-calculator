@@ -51,4 +51,10 @@ export default function DownloadW4({ formData }) {
 
   return (
     <button
-      className="bg-green
+      className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded shadow"
+      onClick={fillPdf}
+    >
+      Download Filled W-4 PDF
+    </button>
+  );
+}
