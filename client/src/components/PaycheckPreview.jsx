@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { calculateWithholding } from './utils/calculateTax';
 
 export default function PaycheckPreview({ formData }) {
   const [preview, setPreview] = useState(null);
@@ -10,28 +11,16 @@ export default function PaycheckPreview({ formData }) {
       return;
     }
 
-
-    const fetchPreview = async () => {
-      setLoading(true);
-      try {
-        const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
-        const response = await fetch(`${backendUrl}/calculate`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-
-        const result = await response.json();
-        setPreview(result);
-      } catch (error) {
-        console.error("Error fetching preview:", error);
-        setPreview(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPreview();
+    setLoading(true);
+    try {
+      const result = calculateWithholding(formData);
+      setPreview(result);
+    } catch (error) {
+      console.error("Error in calculation:", error);
+      setPreview(null);
+    } finally {
+      setLoading(false);
+    }
   }, [formData]);
 
   return (
