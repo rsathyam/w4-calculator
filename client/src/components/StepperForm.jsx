@@ -38,7 +38,7 @@ export default function StepperForm() {
       <StepIndicator steps={steps} current={currentStep} />
       <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
 
-      <div className="flex justify-between pt-6">
+      <div className="flex justify-between items-center mt-6 px-4">
         <button
           type="button"
           onClick={goBack}
