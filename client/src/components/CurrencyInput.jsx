@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CurrencyInput({
   label,
@@ -8,58 +8,66 @@ export default function CurrencyInput({
   min = 0,
   max = Number.MAX_SAFE_INTEGER,
   helperText = '',
-  icon: Icon,
+  icon: Icon
 }) {
-  const [internal, setInternal] = useState(value || '');
+  const [displayValue, setDisplayValue] = useState('');
   const [error, setError] = useState('');
 
-  const formatCurrency = (val) => {
-    const num = parseFloat(val);
-    if (isNaN(num)) return '';
-    return `$${num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  // Sync displayed value with incoming prop
+  useEffect(() => {
+    if (value !== undefined && value !== null && !isNaN(value)) {
+      setDisplayValue(formatCurrency(value));
+    } else {
+      setDisplayValue('');
+    }
+  }, [value]);
+
+  const formatCurrency = (num) => {
+    const parsed = parseFloat(num);
+    if (isNaN(parsed)) return '';
+    return `$${parsed.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
   };
 
-  const handleInput = (e) => {
+  const parseCurrency = (str) => {
+    return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+  };
+
+  const handleChange = (e) => {
     const raw = e.target.value.replace(/[^0-9.]/g, '');
-    setInternal(raw);
-    setError('');
-    onChange(name, raw);
+    setDisplayValue(raw);
   };
 
   const handleBlur = () => {
-    let num = parseFloat(internal);
-    if (isNaN(num)) {
+    const numericValue = parseCurrency(displayValue);
+    if (isNaN(numericValue)) {
       setError('Please enter a valid number.');
       return;
     }
-
-    if (num < min) {
-      setError(`Minimum value is $${min}`);
-      num = min;
-    } else if (num > max) {
-      setError(`Maximum value is $${max.toLocaleString()}`);
-      num = max;
+    if (numericValue < min) {
+      setError(`Minimum is $${min}`);
+    } else if (numericValue > max) {
+      setError(`Maximum is $${max.toLocaleString()}`);
     } else {
       setError('');
     }
-
-    setInternal(num);
-    onChange(name, num);
+    setDisplayValue(formatCurrency(numericValue));
+    onChange(name, numericValue);
   };
 
   return (
-    <div className="mb-5">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
+    <div className="mb-4">
+      <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
         {Icon && <Icon className="text-gray-500" />}
         {label}
       </label>
       <input
         type="text"
-        id={name}
         name={name}
-        inputMode="decimal"
-        value={internal !== '' ? formatCurrency(internal) : ''}
-        onChange={handleInput}
+        value={displayValue}
+        onChange={handleChange}
         onBlur={handleBlur}
         placeholder="$0.00"
         className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
@@ -68,12 +76,8 @@ export default function CurrencyInput({
             : 'border-gray-300 focus:ring-blue-500'
         }`}
       />
-      {helperText && !error && (
-        <p className="text-xs text-gray-500 mt-1">{helperText}</p>
-      )}
-      {error && (
-        <p className="text-xs text-red-600 mt-1 font-medium">{error}</p>
-      )}
+      {helperText && !error && <p className="text-xs text-gray-500 mt-1">{helperText}</p>}
+      {error && <p className="text-xs text-red-600 mt-1">{error}</p>}
     </div>
   );
 }
