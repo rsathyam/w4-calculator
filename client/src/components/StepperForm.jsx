@@ -34,7 +34,7 @@ export default function StepperForm() {
   const StepComponent = steps[currentStep].Component;
 
   return (
-    <div className="max-w-2xl mx-auto bg-gray-50 p-6 rounded-lg shadow-lg space-y-6">
+    <div className="max-w-4xl w-full mx-auto bg-white shadow-xl rounded-xl px-6 sm:px-10 py-10 space-y-6">
       <StepIndicator steps={steps} current={currentStep} />
       <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
 
