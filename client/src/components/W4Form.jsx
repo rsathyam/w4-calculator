@@ -1,59 +1,215 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function W4Form({ formData, setFormData }) {
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
+  const validateField = (name, value) => {
+    let error = '';
+    if (!value && ['firstName', 'lastName', 'grossPay', 'ssn'].includes(name)) {
+      error = 'This field is required';
+    }
+    if (name === 'ssn' && value && !/^\d{3}-\d{2}-\d{4}$/.test(value)) {
+      error = 'Format: XXX-XX-XXXX';
+    }
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    validateField(name, value);
+  };
+
+  const inputStyle = (name) =>
+    `input ${errors[name] ? 'border-red-500' : 'border-gray-300'}`;
+
   return (
-    <form className="space-y-4 bg-white p-6 rounded shadow-md border border-gray-200">
-      <h2 className="text-xl font-bold">W-4 Input Form</h2>
+    <form className="space-y-6 bg-white p-6 rounded-xl shadow-md border border-gray-200">
+      <h2 className="text-2xl font-semibold text-gray-800">W-4 Input Form</h2>
 
-      {/* Personal Info */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" name="firstName" placeholder="First Name" value={formData.firstName || ''} onChange={handleChange} className="input" />
-        <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName || ''} onChange={handleChange} className="input" />
-        <input type="text" name="ssn" placeholder="Social Security Number" value={formData.ssn || ''} onChange={handleChange} className="input" />
-        <input type="text" name="address" placeholder="Street Address" value={formData.address || ''} onChange={handleChange} className="input" />
-        <input type="text" name="cityStateZip" placeholder="City, State, ZIP" value={formData.cityStateZip || ''} onChange={handleChange} className="input" />
-        <input type="text" name="signature" placeholder="Signature (optional)" value={formData.signature || ''} onChange={handleChange} className="input" />
-        <input type="date" name="date" value={formData.date || ''} onChange={handleChange} className="input" />
+      {/* Section: Personal Info */}
+      <div>
+        <h3 className="font-medium text-gray-700 mb-2">Personal Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input
+              name="firstName"
+              placeholder="First Name *"
+              value={formData.firstName || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={inputStyle('firstName')}
+            />
+            {errors.firstName && <p className="text-sm text-red-600">{errors.firstName}</p>}
+          </div>
+          <div>
+            <input
+              name="lastName"
+              placeholder="Last Name *"
+              value={formData.lastName || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={inputStyle('lastName')}
+            />
+            {errors.lastName && <p className="text-sm text-red-600">{errors.lastName}</p>}
+          </div>
+          <div>
+            <input
+              name="ssn"
+              placeholder="SSN (XXX-XX-XXXX) *"
+              value={formData.ssn || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={inputStyle('ssn')}
+            />
+            {errors.ssn && <p className="text-sm text-red-600">{errors.ssn}</p>}
+          </div>
+          <input
+            name="address"
+            placeholder="Street Address"
+            value={formData.address || ''}
+            onChange={handleChange}
+            className="input"
+          />
+          <input
+            name="cityStateZip"
+            placeholder="City, State ZIP"
+            value={formData.cityStateZip || ''}
+            onChange={handleChange}
+            className="input"
+          />
+          <input
+            name="signature"
+            placeholder="Signature"
+            value={formData.signature || ''}
+            onChange={handleChange}
+            className="input"
+          />
+          <input
+            type="date"
+            name="date"
+            value={formData.date || ''}
+            onChange={handleChange}
+            className="input"
+          />
+        </div>
       </div>
 
-      {/* Tax-related fields */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        <input type="number" name="grossPay" placeholder="Gross Pay" value={formData.grossPay || ''} onChange={handleChange} className="input" />
-        <select name="payFrequency" value={formData.payFrequency || 'biweekly'} onChange={handleChange} className="input">
-          <option value="weekly">Weekly</option>
-          <option value="biweekly">Biweekly</option>
-          <option value="semimonthly">Semi-Monthly</option>
-          <option value="monthly">Monthly</option>
-        </select>
-        <select name="filingStatus" value={formData.filingStatus || 'single'} onChange={handleChange} className="input">
-          <option value="single">Single</option>
-          <option value="married">Married</option>
-          <option value="head">Head of Household</option>
-        </select>
-        <input type="number" name="dependents" placeholder="Dependents" value={formData.dependents || ''} onChange={handleChange} className="input" />
-        <input type="number" name="otherIncome" placeholder="Other Income" value={formData.otherIncome || ''} onChange={handleChange} className="input" />
-        <input type="number" name="deductions" placeholder="Deductions" value={formData.deductions || ''} onChange={handleChange} className="input" />
-        <input type="number" name="extraWithholding" placeholder="Extra Withholding" value={formData.extraWithholding || ''} onChange={handleChange} className="input" />
-        <input type="number" name="pretaxDeductions" placeholder="Pretax Deductions" value={formData.pretaxDeductions || ''} onChange={handleChange} className="input" />
+      {/* Section: Financial Info */}
+      <div>
+        <h3 className="font-medium text-gray-700 mb-2">Tax & Withholding Info</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input
+              name="grossPay"
+              type="number"
+              placeholder="Gross Pay *"
+              value={formData.grossPay || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className={inputStyle('grossPay')}
+            />
+            {errors.grossPay && <p className="text-sm text-red-600">{errors.grossPay}</p>}
+          </div>
+
+          <select
+            name="payFrequency"
+            value={formData.payFrequency || 'biweekly'}
+            onChange={handleChange}
+            className="input"
+          >
+            <option value="weekly">Weekly</option>
+            <option value="biweekly">Biweekly</option>
+            <option value="semimonthly">Semi-Monthly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+
+          <select
+            name="filingStatus"
+            value={formData.filingStatus || 'single'}
+            onChange={handleChange}
+            className="input"
+          >
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="head">Head of Household</option>
+          </select>
+
+          <input
+            type="number"
+            name="dependents"
+            placeholder="Dependents"
+            value={formData.dependents || ''}
+            onChange={handleChange}
+            className="input"
+          />
+
+          <input
+            type="number"
+            name="otherIncome"
+            placeholder="Other Income"
+            value={formData.otherIncome || ''}
+            onChange={handleChange}
+            className="input"
+          />
+
+          <input
+            type="number"
+            name="deductions"
+            placeholder="Deductions"
+            value={formData.deductions || ''}
+            onChange={handleChange}
+            className="input"
+          />
+
+          <input
+            type="number"
+            name="extraWithholding"
+            placeholder="Extra Withholding"
+            value={formData.extraWithholding || ''}
+            onChange={handleChange}
+            className="input"
+          />
+
+          <input
+            type="number"
+            name="pretaxDeductions"
+            placeholder="Pretax Deductions"
+            value={formData.pretaxDeductions || ''}
+            onChange={handleChange}
+            className="input"
+          />
+        </div>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-4">
+          <label className="inline-flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="multipleJobs"
+              checked={formData.multipleJobs || false}
+              onChange={handleChange}
+            />
+            <span>Multiple jobs or spouse works?</span>
+          </label>
+
+          <label className="inline-flex items-center gap-2">
+            <input
+              type="checkbox"
+              name="exempt"
+              checked={formData.exempt || false}
+              onChange={handleChange}
+            />
+            <span>Exempt from withholding?</span>
+          </label>
+        </div>
       </div>
-
-      <label className="flex items-center gap-2 mt-4">
-        <input type="checkbox" name="multipleJobs" checked={formData.multipleJobs || false} onChange={handleChange} />
-        <span>Multiple jobs or spouse works?</span>
-      </label>
-
-      <label className="flex items-center gap-2">
-        <input type="checkbox" name="exempt" checked={formData.exempt || false} onChange={handleChange} />
-        <span>Exempt from withholding?</span>
-      </label>
     </form>
   );
 }
