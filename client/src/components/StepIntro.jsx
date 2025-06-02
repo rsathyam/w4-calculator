@@ -13,12 +13,6 @@ export default function StepIntro({ onNext }) {
         <li>✅ Generate a filled-in IRS W-4 PDF</li>
         <li>✅ Download your personalized form — no data is saved or sent anywhere</li>
       </ul>
-      <button
-        onClick={onNext}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Get Started
-      </button>
     </div>
   );
 }
