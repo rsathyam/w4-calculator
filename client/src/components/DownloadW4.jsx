@@ -1,5 +1,5 @@
 import React from 'react';
-import { fillW4Template } from '../utils/fillW4Template';
+import { fillW4Template } from './utils/fillW4Template';
 
 export default function DownloadW4({ formData }) {
   return (
