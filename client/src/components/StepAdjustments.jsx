@@ -1,4 +1,6 @@
 import React from 'react';
+import CurrencyInput from './CurrencyInput';
+
 
 export default function StepAdjustments({ form, setForm }) {
   const handleNumberChange = (e, key) => {
@@ -29,14 +31,14 @@ export default function StepAdjustments({ form, setForm }) {
         <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
           Deductions
         </label>
-        <input
-          id="deductions"
-          type="text"
-          inputMode="decimal"
-          value={form.deductions || ''}
-          onChange={(e) => handleNumberChange(e, 'deductions')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
-          placeholder="$0.00"
+        <CurrencyInput
+          label="Deductions"
+          name="deductions"
+          value={form.deductions}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={100000}
+          helperText="Enter any itemized deductions beyond the standard deduction."
         />
       </div>
 
@@ -44,14 +46,14 @@ export default function StepAdjustments({ form, setForm }) {
         <label htmlFor="otherIncome" className="block text-sm font-medium text-gray-700">
           Other Income
         </label>
-        <input
-          id="otherIncome"
-          type="text"
-          inputMode="decimal"
-          value={form.otherIncome || ''}
-          onChange={(e) => handleNumberChange(e, 'otherIncome')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
-          placeholder="$0.00"
+        <CurrencyInput
+          label="Other Income"
+          name="otherIncome"
+          value={form.otherIncome}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={1000000}
+          helperText="Include any other income you expect to receive."
         />
       </div>
 
@@ -59,14 +61,14 @@ export default function StepAdjustments({ form, setForm }) {
         <label htmlFor="pretaxDeductions" className="block text-sm font-medium text-gray-700">
           Pre-tax Contributions (e.g. 401(k), HSA)
         </label>
-        <input
-          id="pretaxDeductions"
-          type="text"
-          inputMode="decimal"
-          value={form.pretaxDeductions || ''}
-          onChange={(e) => handleNumberChange(e, 'pretaxDeductions')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
-          placeholder="$0.00"
+        <CurrencyInput
+          label="Pre-tax Deductions"
+          name="pretaxDeductions"
+          value={form.pretaxDeductions}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={100000}
+          helperText="Enter any 401(k), HSA, or other pre-tax deductions."
         />
       </div>
 
@@ -74,14 +76,14 @@ export default function StepAdjustments({ form, setForm }) {
         <label htmlFor="extraWithholding" className="block text-sm font-medium text-gray-700">
           Extra Withholding per Paycheck
         </label>
-        <input
-          id="extraWithholding"
-          type="text"
-          inputMode="decimal"
-          value={form.extraWithholding || ''}
-          onChange={(e) => handleNumberChange(e, 'extraWithholding')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
-          placeholder="$0.00"
+        <CurrencyInput
+          label="Extra Withholding"
+          name="extraWithholding"
+          value={form.extraWithholding}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={10000}
+          helperText="Any extra amount you'd like withheld from each paycheck."
         />
       </div>
     </div>

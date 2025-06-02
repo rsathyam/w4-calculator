@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrencyInput from './CurrencyInput';
 
 export default function StepIncomeDetails({ form, setForm }) {
   const handleMoneyChange = (e, key) => {
@@ -16,21 +17,14 @@ export default function StepIncomeDetails({ form, setForm }) {
         <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
           Gross Pay
         </label>
-        <input
-          type="text"
+        <CurrencyInput
+          label="Gross Pay"
           name="grossPay"
-          inputMode="decimal"
-          value={
-            form.grossPay === ''
-              ? ''
-              : `$${Number(form.grossPay).toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 2,
-                })}`
-          }
-          onChange={(e) => handleMoneyChange(e, 'grossPay')}
-          placeholder="$0.00"
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
+          value={form.grossPay}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={1000}
+          max={1000000}
+          helperText="Enter your gross pay per paycheck, before taxes and deductions."
         />
       </div>
 
