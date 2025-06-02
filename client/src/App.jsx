@@ -1,6 +1,8 @@
 import React from 'react';
 import StepperForm from './components/StepperForm';
 import './index.css'; // Tailwind styles
+import { inject } from '@vercel/analytics';
+inject();
 
 function App() {
   return (
