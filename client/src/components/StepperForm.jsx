@@ -7,7 +7,7 @@ import StepAdjustments from './StepAdjustments';
 import StepReview from './StepReview';
 
 import jsPDF from 'jspdf';
-import { fillPdf } from './utils/pdfFiller'; // optional util
+import DownloadW4 from './DownloadW4';
 
 const steps = [
   { title: 'Personal Info', Component: StepPersonalInfo },
@@ -25,7 +25,7 @@ export default function StepperForm() {
   const goBack = () => setCurrentStep((s) => Math.max(s - 1, 0));
 
   const handleDownload = async () => {
-    const pdf = await fillPdf(form); // if you’re using IRS template
+    const pdf = await DownloadW4(form); // if you’re using IRS template
     pdf.save('w4_filled.pdf');
   };
 
