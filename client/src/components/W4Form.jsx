@@ -112,7 +112,7 @@ export default function W4Form({ formData, setFormData }) {
               name="grossPay"
               inputMode="decimal"
               value={
-                form.grossPay === '' ? '' : `$${Number(form.grossPay).toLocaleString(undefined, {
+                formData.grossPay === '' ? '' : `$${Number(formData.grossPay).toLocaleString(undefined, {
                   minimumFractionDigits: 0,
                   maximumFractionDigits: 2,
                 })}`
@@ -121,7 +121,7 @@ export default function W4Form({ formData, setFormData }) {
                 // Remove $ and commas, allow only digits and decimal
                 const raw = e.target.value.replace(/[^0-9.]/g, '');
                 if (raw === '' || /^\d*\.?\d{0,2}$/.test(raw)) {
-                  setForm({ ...form, grossPay: raw });
+                  setFormData({ ...formData, grossPay: raw });
                 }
               }}
               placeholder="$0.00"
