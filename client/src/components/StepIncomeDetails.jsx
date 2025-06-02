@@ -14,11 +14,12 @@ export default function StepIncomeDetails({ form, setForm }) {
       <h2 className="text-lg font-semibold text-gray-800">Step 3: Pay & Withholding</h2>
 
       <div>
-        <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
-          Gross Pay
-        </label>
         <CurrencyInput
-          label="Gross Pay"
+          label={
+            <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
+              Gross Pay
+            </label>
+          }
           name="grossPay"
           value={form.grossPay}
           onChange={(field, val) => setForm({ ...form, [field]: val })}

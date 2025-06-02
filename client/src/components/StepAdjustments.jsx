@@ -28,11 +28,12 @@ export default function StepAdjustments({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
-          Deductions
-        </label>
         <CurrencyInput
-          label="Deductions"
+          label={
+            <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
+              Deductions
+            </label>
+          }
           name="deductions"
           value={form.deductions}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -43,11 +44,12 @@ export default function StepAdjustments({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="otherIncome" className="block text-sm font-medium text-gray-700">
-          Other Income
-        </label>
         <CurrencyInput
-          label="Other Income"
+          label={
+            <label htmlFor="otherIncome" className="block text-sm font-medium text-gray-700">
+              Other Income
+            </label>
+          }
           name="otherIncome"
           value={form.otherIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -75,11 +77,12 @@ export default function StepAdjustments({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="extraWithholding" className="block text-sm font-medium text-gray-700">
-          Extra Withholding per Paycheck
-        </label>
         <CurrencyInput
-          label="Extra Withholding"
+          label={
+            <label htmlFor="extraWithholding" className="block text-sm font-medium text-gray-700">
+              Extra Withholding per Paycheck
+            </label>
+          }
           name="extraWithholding"
           value={form.extraWithholding}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
