@@ -1,224 +1,239 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-export default function W4Form({ formData, setFormData }) {
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const validateField = (name, value) => {
-    let error = '';
-    if (!value && ['firstName', 'lastName', 'grossPay', 'ssn'].includes(name)) {
-      error = 'This field is required';
-    }
-    if (name === 'ssn' && value && !/^\d{3}-\d{2}-\d{4}$/.test(value)) {
-      error = 'Format: XXX-XX-XXXX';
-    }
-    setErrors((prev) => ({ ...prev, [name]: error }));
-  };
-
-  const handleBlur = (e) => {
-    const { name, value } = e.target;
-    validateField(name, value);
-  };
-
-  const inputStyle = (name) =>
-    `input ${errors[name] ? 'border-red-500' : 'border-gray-300'}`;
-
+export default function W4Form({ form, setForm }) {
   return (
-    <form className="space-y-6 bg-white p-6 rounded-xl shadow-md border border-gray-200">
-      <h2 className="text-2xl font-semibold text-gray-800">W-4 Input Form</h2>
-
-      {/* Section: Personal Info */}
+    <form className="space-y-6">
+      {/* Personal Info */}
       <div>
-        <h3 className="font-medium text-gray-700 mb-2">Personal Information</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">Personal Information</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+              First Name
+            </label>
             <input
+              id="firstName"
               name="firstName"
-              placeholder="First Name *"
-              value={formData.firstName || ''}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={inputStyle('firstName')}
+              value={form.firstName}
+              onChange={(e) => setForm({ ...form, firstName: e.target.value })}
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
             />
-            {errors.firstName && <p className="text-sm text-red-600">{errors.firstName}</p>}
           </div>
           <div>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+              Last Name
+            </label>
             <input
+              id="lastName"
               name="lastName"
-              placeholder="Last Name *"
-              value={formData.lastName || ''}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={inputStyle('lastName')}
+              value={form.lastName}
+              onChange={(e) => setForm({ ...form, lastName: e.target.value })}
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
             />
-            {errors.lastName && <p className="text-sm text-red-600">{errors.lastName}</p>}
           </div>
           <div>
+            <label htmlFor="ssn" className="block text-sm font-medium text-gray-700">
+              Social Security Number
+            </label>
             <input
+              id="ssn"
               name="ssn"
-              placeholder="SSN (XXX-XX-XXXX) *"
-              value={formData.ssn || ''}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={inputStyle('ssn')}
+              value={form.ssn}
+              onChange={(e) => setForm({ ...form, ssn: e.target.value })}
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
             />
-            {errors.ssn && <p className="text-sm text-red-600">{errors.ssn}</p>}
           </div>
-          <input
-            name="address"
-            placeholder="Street Address"
-            value={formData.address || ''}
-            onChange={handleChange}
-            className="input"
-          />
-          <input
-            name="cityStateZip"
-            placeholder="City, State ZIP"
-            value={formData.cityStateZip || ''}
-            onChange={handleChange}
-            className="input"
-          />
-          <input
-            name="signature"
-            placeholder="Signature"
-            value={formData.signature || ''}
-            onChange={handleChange}
-            className="input"
-          />
-          <input
-            type="date"
-            name="date"
-            value={formData.date || ''}
-            onChange={handleChange}
-            className="input"
-          />
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+              Address
+            </label>
+            <input
+              id="address"
+              name="address"
+              value={form.address}
+              onChange={(e) => setForm({ ...form, address: e.target.value })}
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="cityStateZip" className="block text-sm font-medium text-gray-700">
+              City, State, ZIP
+            </label>
+            <input
+              id="cityStateZip"
+              name="cityStateZip"
+              value={form.cityStateZip}
+              onChange={(e) => setForm({ ...form, cityStateZip: e.target.value })}
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
         </div>
       </div>
 
-      {/* Section: Financial Info */}
+      {/* Filing Status */}
       <div>
-        <h3 className="font-medium text-gray-700 mb-2">Tax & Withholding Info</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">Filing Status</h3>
+        <div className="space-y-2">
+          {['single', 'married', 'head'].map((status) => (
+            <label key={status} className="inline-flex items-center gap-2">
+              <input
+                type="radio"
+                name="filingStatus"
+                value={status}
+                checked={form.filingStatus === status}
+                onChange={(e) => setForm({ ...form, filingStatus: e.target.value })}
+              />
+              {status === 'single'
+                ? 'Single or Married filing separately'
+                : status === 'married'
+                ? 'Married filing jointly'
+                : 'Head of Household'}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* Tax & Withholding Info */}
+      <div>
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">Tax and Withholding Information</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          {/* Gross Pay */}
           <div>
+            <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
+              Gross Pay (per pay period)
+            </label>
             <input
+              id="grossPay"
               type="text"
-              name="grossPay"
               inputMode="decimal"
+              name="grossPay"
               value={
-                formData.grossPay === '' ? '' : `$${Number(formData.grossPay).toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 2,
-                })}`
+                form.grossPay === ''
+                  ? ''
+                  : `$${Number(form.grossPay).toLocaleString(undefined, {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 2,
+                    })}`
               }
               onChange={(e) => {
-                // Remove $ and commas, allow only digits and decimal
                 const raw = e.target.value.replace(/[^0-9.]/g, '');
                 if (raw === '' || /^\d*\.?\d{0,2}$/.test(raw)) {
-                  setFormData({ ...formData, grossPay: raw });
+                  setForm({ ...form, grossPay: raw });
                 }
               }}
               placeholder="$0.00"
-              className="border border-gray-300 px-3 py-2 rounded w-full"
+              className="mt-1 block w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
             />
-            {errors.grossPay && <p className="text-sm text-red-600">{errors.grossPay}</p>}
           </div>
 
-          <select
-            name="payFrequency"
-            value={formData.payFrequency || 'biweekly'}
-            onChange={handleChange}
-            className="input"
-          >
-            <option value="weekly">Weekly</option>
-            <option value="biweekly">Biweekly</option>
-            <option value="semimonthly">Semi-Monthly</option>
-            <option value="monthly">Monthly</option>
-          </select>
+          {/* Extra Withholding */}
+          <div>
+            <label htmlFor="extraWithholding" className="block text-sm font-medium text-gray-700">
+              Extra Withholding (per paycheck)
+            </label>
+            <input
+              id="extraWithholding"
+              type="number"
+              name="extraWithholding"
+              value={form.extraWithholding}
+              onChange={(e) => setForm({ ...form, extraWithholding: e.target.value })}
+              placeholder="0"
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
 
-          <select
-            name="filingStatus"
-            value={formData.filingStatus || 'single'}
-            onChange={handleChange}
-            className="input"
-          >
-            <option value="single">Single</option>
-            <option value="married">Married</option>
-            <option value="head">Head of Household</option>
-          </select>
+          {/* Other Income */}
+          <div>
+            <label htmlFor="otherIncome" className="block text-sm font-medium text-gray-700">
+              Other Income (not from jobs)
+            </label>
+            <input
+              id="otherIncome"
+              type="number"
+              name="otherIncome"
+              value={form.otherIncome}
+              onChange={(e) => setForm({ ...form, otherIncome: e.target.value })}
+              placeholder="0"
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
 
-          <input
-            type="number"
-            name="dependents"
-            placeholder="Dependents"
-            value={formData.dependents || ''}
-            onChange={handleChange}
-            className="input"
-          />
+          {/* Pre-tax Deductions */}
+          <div>
+            <label htmlFor="pretaxDeductions" className="block text-sm font-medium text-gray-700">
+              Pre-tax Deductions (e.g., 401(k), HSA)
+            </label>
+            <input
+              id="pretaxDeductions"
+              type="number"
+              name="pretaxDeductions"
+              value={form.pretaxDeductions}
+              onChange={(e) => setForm({ ...form, pretaxDeductions: e.target.value })}
+              placeholder="0"
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
 
-          <input
-            type="number"
-            name="otherIncome"
-            placeholder="Other Income"
-            value={formData.otherIncome || ''}
-            onChange={handleChange}
-            className="input"
-          />
+          {/* Deductions */}
+          <div>
+            <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
+              Additional Deductions
+            </label>
+            <input
+              id="deductions"
+              type="number"
+              name="deductions"
+              value={form.deductions}
+              onChange={(e) => setForm({ ...form, deductions: e.target.value })}
+              placeholder="0"
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
 
-          <input
-            type="number"
-            name="deductions"
-            placeholder="Deductions"
-            value={formData.deductions || ''}
-            onChange={handleChange}
-            className="input"
-          />
+          {/* Dependents */}
+          <div>
+            <label htmlFor="dependents" className="block text-sm font-medium text-gray-700">
+              Number of Dependents
+            </label>
+            <input
+              id="dependents"
+              type="number"
+              name="dependents"
+              value={form.dependents}
+              onChange={(e) => setForm({ ...form, dependents: e.target.value })}
+              placeholder="0"
+              className="mt-1 w-full rounded border border-gray-300 px-3 py-2 shadow-sm"
+            />
+          </div>
 
-          <input
-            type="number"
-            name="extraWithholding"
-            placeholder="Extra Withholding"
-            value={formData.extraWithholding || ''}
-            onChange={handleChange}
-            className="input"
-          />
-
-          <input
-            type="number"
-            name="pretaxDeductions"
-            placeholder="Pretax Deductions"
-            value={formData.pretaxDeductions || ''}
-            onChange={handleChange}
-            className="input"
-          />
-        </div>
-
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-4">
-          <label className="inline-flex items-center gap-2">
+          {/* Multiple Jobs */}
+          <div className="flex items-center mt-2">
             <input
               type="checkbox"
-              name="multipleJobs"
-              checked={formData.multipleJobs || false}
-              onChange={handleChange}
+              id="multipleJobs"
+              checked={form.multipleJobs}
+              onChange={(e) => setForm({ ...form, multipleJobs: e.target.checked })}
+              className="mr-2"
             />
-            <span>Multiple jobs or spouse works?</span>
-          </label>
+            <label htmlFor="multipleJobs" className="text-sm text-gray-700">
+              Multiple jobs or spouse works?
+            </label>
+          </div>
 
-          <label className="inline-flex items-center gap-2">
+          {/* Exempt */}
+          <div className="flex items-center mt-2">
             <input
               type="checkbox"
-              name="exempt"
-              checked={formData.exempt || false}
-              onChange={handleChange}
+              id="exempt"
+              checked={form.exempt}
+              onChange={(e) => setForm({ ...form, exempt: e.target.checked })}
+              className="mr-2"
             />
-            <span>Exempt from withholding?</span>
-          </label>
+            <label htmlFor="exempt" className="text-sm text-gray-700">
+              Exempt from withholding
+            </label>
+          </div>
         </div>
       </div>
     </form>
