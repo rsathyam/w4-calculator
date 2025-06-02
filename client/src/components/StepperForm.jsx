@@ -5,12 +5,13 @@ import StepFilingStatus from './StepFilingStatus';
 import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
 import StepReview from './StepReview';
+import StepIntro from './StepIntro';
 
 import jsPDF from 'jspdf';
 import DownloadW4 from './DownloadW4';
 
 const steps = [
-  { label: 'Welcome', component: StepIntro },
+  { label: 'Welcome', Component: StepIntro },
   { title: 'Personal Info', Component: StepPersonalInfo },
   { title: 'Filing Status', Component: StepFilingStatus },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
