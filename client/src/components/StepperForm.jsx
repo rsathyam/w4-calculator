@@ -11,7 +11,7 @@ import jsPDF from 'jspdf';
 import DownloadW4 from './DownloadW4';
 
 const steps = [
-  { label: 'Welcome', Component: StepIntro },
+  { title: 'Welcome', Component: StepIntro },
   { title: 'Personal Info', Component: StepPersonalInfo },
   { title: 'Filing Status', Component: StepFilingStatus },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
