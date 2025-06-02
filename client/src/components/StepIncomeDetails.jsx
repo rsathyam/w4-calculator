@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyInput from './CurrencyInput';
+import {FaMoneyBillWave} from 'react-icons/fa';
 
 export default function StepIncomeDetails({ form, setForm }) {
   const handleMoneyChange = (e, key) => {
@@ -26,6 +27,7 @@ export default function StepIncomeDetails({ form, setForm }) {
           min={1000}
           max={1000000}
           helperText="Enter your gross pay per paycheck, before taxes and deductions."
+          icon={FaMoneyBillWave}
         />
       </div>
 

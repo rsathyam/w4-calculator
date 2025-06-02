@@ -8,6 +8,7 @@ export default function CurrencyInput({
   min = 0,
   max = Number.MAX_SAFE_INTEGER,
   helperText = '',
+  icon: Icon,
 }) {
   const [internal, setInternal] = useState(value || '');
   const [error, setError] = useState('');
@@ -48,7 +49,8 @@ export default function CurrencyInput({
 
   return (
     <div className="mb-5">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1">
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
+        {Icon && <Icon className="text-gray-500" />}
         {label}
       </label>
       <input

@@ -1,6 +1,6 @@
 import React from 'react';
 import CurrencyInput from './CurrencyInput';
-
+import { FaPiggyBank, FaWallet, FaChartLine, FaDollarSign } from 'react-icons/fa';
 
 export default function StepAdjustments({ form, setForm }) {
   const handleNumberChange = (e, key) => {
@@ -40,6 +40,7 @@ export default function StepAdjustments({ form, setForm }) {
           min={0}
           max={100000}
           helperText="Enter any itemized deductions beyond the standard deduction."
+          icon={FaChartLine}
         />
       </div>
 
@@ -56,6 +57,7 @@ export default function StepAdjustments({ form, setForm }) {
           min={0}
           max={1000000}
           helperText="Include any other income you expect to receive."
+          icon={FaPiggyBank}
         />
       </div>
 
@@ -73,6 +75,7 @@ export default function StepAdjustments({ form, setForm }) {
           min={0}
           max={100000}
           helperText="Enter any 401(k), HSA, or other pre-tax deductions."
+          icon={FaWallet}
         />
       </div>
 
@@ -89,6 +92,7 @@ export default function StepAdjustments({ form, setForm }) {
           min={0}
           max={10000}
           helperText="Any extra amount you'd like withheld from each paycheck."
+          icon={FaDollarSign}
         />
       </div>
     </div>
