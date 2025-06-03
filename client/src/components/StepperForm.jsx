@@ -6,9 +6,10 @@ import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
 import StepReview from './StepReview';
 import StepIntro from './StepIntro';
+import { fillW4Template } from './utils/fillW4Template';
+
 
 import jsPDF from 'jspdf';
-import DownloadW4 from './DownloadW4';
 
 const steps = [
   { title: 'Welcome', Component: StepIntro },
@@ -27,8 +28,23 @@ export default function StepperForm() {
   const goBack = () => setCurrentStep((s) => Math.max(s - 1, 0));
 
   const handleDownload = async () => {
+    try {
+      const pdfBytes = await fillW4Template(form);
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'w4_form.pdf';
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Failed to generate PDF:", err);
+    }
+    
+    /*
     const pdf = await DownloadW4(form); // if you’re using IRS template
-    pdf.save('w4_filled.pdf');
+    pdf.save('w4_filled.pdf');*/
   };
 
   const StepComponent = steps[currentStep].Component;
