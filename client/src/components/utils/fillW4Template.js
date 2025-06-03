@@ -30,11 +30,4 @@ export async function fillW4Template(formData) {
 
   const pdfBytes = await pdfDoc.save();
   return pdfBytes;
-  /*const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'w4_filled.pdf';
-  link.click();
-  URL.revokeObjectURL(url);*/
 }
