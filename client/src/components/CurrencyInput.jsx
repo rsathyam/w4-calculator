@@ -11,26 +11,29 @@ export default function CurrencyInput({
   icon: Icon,
 }) {
   const [error, setError] = useState('');
+  const [rawInput, setRawInput] = useState('');
 
-  // Format number with $ and commas
+  useEffect(() => {
+    if (value !== undefined && value !== null && !isNaN(value)) {
+      setRawInput(formatCurrency(value));
+    }
+  }, [value]);
+
   const formatCurrency = (num) => {
-    const parsed = parseFloat(num);
+    const parsed = parseInt(num);
     if (isNaN(parsed)) return '';
-    return `$${parsed.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })}`;
+    return `$${parsed.toLocaleString()}`;
   };
 
-  // Remove $ and commas and return raw float
   const parseCurrency = (str) => {
-    const cleaned = str.replace(/[^0-9.]/g, '');
-    return parseFloat(cleaned);
+    const cleaned = str.replace(/[^0-9]/g, '');
+    return parseInt(cleaned);
   };
 
   const handleChange = (e) => {
-    const raw = e.target.value;
-    const numeric = parseCurrency(raw);
+    const input = e.target.value;
+    setRawInput(input);
+    const numeric = parseCurrency(input);
 
     if (isNaN(numeric)) {
       onChange(name, 0);
@@ -38,12 +41,18 @@ export default function CurrencyInput({
     }
 
     if (numeric < min || numeric > max) {
-      setError(`Enter a value between $${min} and $${max.toLocaleString()}`);
+      setError(`Enter a value between $${min.toLocaleString()} and $${max.toLocaleString()}`);
     } else {
       setError('');
+      onChange(name, numeric);
     }
+  };
 
-    onChange(name, numeric);
+  const handleBlur = () => {
+    const numeric = parseCurrency(rawInput);
+    if (!isNaN(numeric)) {
+      setRawInput(formatCurrency(numeric));
+    }
   };
 
   return (
@@ -55,10 +64,11 @@ export default function CurrencyInput({
       <input
         type="text"
         name={name}
-        inputMode="decimal"
-        value={value !== null && value !== undefined ? formatCurrency(value) : ''}
+        inputMode="numeric"
+        value={rawInput}
         onChange={handleChange}
-        placeholder="$0.00"
+        onBlur={handleBlur}
+        placeholder="$0"
         className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
           error
             ? 'border-red-500 focus:ring-red-500'
