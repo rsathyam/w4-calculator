@@ -29,7 +29,7 @@ export async function fillW4Template(formData) {
   const filingStatus = (formData.filingStatus || 'single').toLowerCase();
   const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
   const under17Amount = formData.under17 * 2000;
-  const otherDependentsAmount = formData.otherDependents * 2000;
+  const otherDependentsAmount = formData.otherDependents * 500;
   const totalDependentsAmount = under17Amount + otherDependentsAmount;
   if (income <= dependentIncomeLimit) {
     form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_06[0]').setText(under17Amount.toString());
