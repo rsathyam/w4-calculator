@@ -13,7 +13,7 @@ import jsPDF from 'jspdf';
 
 const steps = [
   { title: 'Welcome', Component: StepIntro },
-  { title: 'Personal Info', Component: StepPersonalInfo },
+//  { title: 'Personal Info', Component: StepPersonalInfo },
   { title: 'Filing Status', Component: StepFilingStatus },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
   { title: 'Adjustments', Component: StepAdjustments },
