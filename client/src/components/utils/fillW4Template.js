@@ -1,4 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
+import { calculateIncome } from './calculateIncome';
 
 export async function fillW4Template(formData) {
   const formPdfBytes = await fetch('/fw4.pdf').then(res => res.arrayBuffer());
@@ -25,13 +26,19 @@ export async function fillW4Template(formData) {
   }
 
   const under17 = formData.under17 || 0;
-  form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_06[0]').setText(formData.under17 * 2000)
-
-  if (formData.under17 === true) {
+  const income = calculateIncome(
+      Math.max(0, parseFloat(formData.grossPay), 
+      Math.max(0, parseFloat(formData.otherIncome || 0)),
+      Math.max(0, parseFloat(formData.pretaxDeductions || 0)))
+  );
+  const filingStatus = (formData.filingStatus || 'single').toLowerCase();
+  const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
+  if (income <= dependentIncomeLimit) {
+    form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_06[0]').setText(formData.under17 * 2000);
+    form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_06[0]').setText(formData.otherDependents * 2000)
 
   }
-
-
+ 
 //  form.getTextField('topmostSubform[0].Page1[0].f1_09[0]').setText(String(formData.dependents || ''));
 //  form.getTextField('topmostSubform[0].Page1[0].f1_10[0]').setText(String(formData.otherIncome || ''));
 //  form.getTextField('topmostSubform[0].Page1[0].f1_11[0]').setText(String(formData.deductions || ''));

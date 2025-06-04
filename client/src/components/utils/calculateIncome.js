@@ -1,4 +1,4 @@
-export function calculateIncome(gross, otherIncome, pretax) {
+export function calculateIncome(freq, gross, otherIncome, pretax) {
     const freqMap = {
         weekly: 52,
         biweekly: 26,
