@@ -20,7 +20,7 @@ export default function StepReview({ form, onDownload }) {
     <div className="space-y-6">
       <h2 className="text-lg font-semibold text-gray-800">Step 5: Review & Download</h2>
 
-      <div className="bg-white rounded shadow-sm border border-gray-200 p-4 space-y-2">
+      <div className="bg-white rounded shadow-sm border border-gray-200 p-6 space-y-2">
         {entries.map(([key, value]) => (
           <div key={key} className="flex justify-between items-center text-sm text-gray-700">
             <span className="capitalize flex items-center gap-1">

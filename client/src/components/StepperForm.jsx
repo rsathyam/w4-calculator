@@ -52,7 +52,7 @@ const steps = [
 
   const StepComponent = steps[currentStep].Component;
   return (
-    <div className="max-w-4xl w-full mx-auto bg-white shadow-xl rounded-xl px-6 sm:px-10 py-10 space-y-6">
+    <div className="max-w-6xl w-full mx-auto bg-white shadow-xl rounded-xl px-8 sm:px-12 py-12 space-y-6">
       <StepIndicator steps={steps} current={currentStep} />
       <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
 
