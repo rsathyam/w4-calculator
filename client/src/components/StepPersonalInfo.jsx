@@ -3,7 +3,7 @@ import React from 'react';
 export default function StepPersonalInfo({ form, setForm }) {
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Step 1: Personal Information</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Personal Information</h2>
 
       <div>
         <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">

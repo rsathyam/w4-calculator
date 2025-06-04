@@ -3,7 +3,7 @@ import React from 'react';
 export default function StepFilingStatus({ form, setForm }) {
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Step 2: Filing Status & Pay Frequency</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Filing Status & Pay Frequency</h2>
 
       <div>
         <label htmlFor="filingStatus" className="block text-sm font-medium text-gray-700">
