@@ -29,10 +29,6 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         min={0}
         max={1000000}
       />
-
-      <p className="text-sm text-gray-700">Standard deduction: ${standardDeduction.toLocaleString()}</p>
-      <p className="text-sm text-gray-700">Line 3 (itemized minus standard): ${line3.toLocaleString()}</p>
-
       <CurrencyInput
         label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other adjustments to income</label>}
         name="adjustmentDeductions"
@@ -43,7 +39,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       />
 
       <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-        <p className="text-sm text-blue-800">Total deductions (line 5): ${line5.toLocaleString()}</p>
+        <p className="text-sm text-blue-800">Total deductions: ${line5.toLocaleString()}</p>
       </div>
     </div>
   );
