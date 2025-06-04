@@ -5,6 +5,7 @@ import StepMultipleJobs from './StepMultipleJobs';
 import StepFilingStatus from './StepFilingStatus';
 import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
+import StepDeductionsWorksheet from './StepDeductionsWorksheet';
 import StepReview from './StepReview';
 import StepIntro from './StepIntro';
 import { fillW4Template } from './utils/fillW4Template';
@@ -43,10 +44,11 @@ const steps = [
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
   ...(form.multipleJobs
     ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
-    : []),  
+    : []),
+  { title: 'Deductions Worksheet', Component: StepDeductionsWorksheet },
   { title: 'Adjustments', Component: StepAdjustments },
   { title: 'Review & Download', Component: StepReview },
-];  
+];
 
   const StepComponent = steps[currentStep].Component;
   return (
