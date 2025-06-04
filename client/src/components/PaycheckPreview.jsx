@@ -29,16 +29,19 @@ export default function PaycheckPreview({ formData }) {
         const pretax = Math.max(0, parseFloat(data.pretaxDeductions || 0));
 
         const annualIncome = calculateIncome(freq, gross, otherIncome, pretax);
-        let totalTax = calculateTax(filingStatus, annualIncome, deductions);
+        const secondIncome = data.secondJobIncome || 0;
+        const spouseIncome = data.spouseIncome || 0;
+        const adjustedIncome = annualIncome + secondIncome + spouseIncome;
+
+        let totalTax = calculateTax(filingStatus, adjustedIncome, deductions);
         const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
 
-        if (annualIncome <= dependentIncomeLimit) {
+        if (adjustedIncome <= dependentIncomeLimit) {
           totalTax = Math.max(
             0,
             totalTax - (under17 * 2000 + otherDependents * 500)
           );
         }
-        if (multipleJobs) totalTax *= 1.05;
 
         const freqMap = {
           weekly: 52,

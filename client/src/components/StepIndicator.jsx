@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function StepIndicator({ steps, current }) {
+  console.log("Got here!!");
   return (
     <div className="flex items-center justify-between mb-4">
       {steps.map((step, index) => (

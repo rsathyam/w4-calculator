@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StepIndicator from './StepIndicator';
 import StepPersonalInfo from './StepPersonalInfo';
+import StepMultipleJobs from './StepMultipleJobs';
 import StepFilingStatus from './StepFilingStatus';
 import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
@@ -11,14 +12,6 @@ import { fillW4Template } from './utils/fillW4Template';
 
 import jsPDF from 'jspdf';
 
-const steps = [
-  { title: 'Welcome', Component: StepIntro },
-//  { title: 'Personal Info', Component: StepPersonalInfo },
-  { title: 'Filing Status', Component: StepFilingStatus },
-  { title: 'Pay & Withholding', Component: StepIncomeDetails },
-  { title: 'Adjustments', Component: StepAdjustments },
-  { title: 'Review & Download', Component: StepReview },
-];
 
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -43,8 +36,21 @@ export default function StepperForm() {
     }
   };
 
-  const StepComponent = steps[currentStep].Component;
+const steps = [
+  { title: 'Welcome', Component: StepIntro },
+//  { title: 'Personal Info', Component: StepPersonalInfo },
+  { title: 'Filing Status', Component: StepFilingStatus },
+  { title: 'Pay & Withholding', Component: StepIncomeDetails },
+  ...(form.multipleJobs
+    ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
+    : []),  
+  { title: 'Adjustments', Component: StepAdjustments },
+  { title: 'Review & Download', Component: StepReview },
+];  
 
+  console.log(steps);
+  const StepComponent = steps[currentStep].Component;
+  console.log(currentStep);
   return (
     <div className="max-w-4xl w-full mx-auto bg-white shadow-xl rounded-xl px-6 sm:px-10 py-10 space-y-6">
       <StepIndicator steps={steps} current={currentStep} />
