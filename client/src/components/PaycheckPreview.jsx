@@ -29,7 +29,7 @@ export default function PaycheckPreview({ formData }) {
         const pretax = Math.max(0, parseFloat(data.pretaxDeductions || 0));
 
         const annualIncome = calculateIncome(freq, gross, otherIncome, pretax);
-        const totalTax = calculateTax(filingStatus, annualIncome, deductions);
+        let totalTax = calculateTax(filingStatus, annualIncome, deductions);
         const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
 
         if (annualIncome <= dependentIncomeLimit) {
