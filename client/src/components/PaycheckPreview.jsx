@@ -92,16 +92,21 @@ export default function PaycheckPreview({ formData }) {
         };
 
         let totalTax = calcTax(taxable, brackets);
+        const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
 
-        // Dependent credits
-        const dependentCredit = (under17 * 2000) + (otherDependents * 500);
-        totalTax = Math.max(0, totalTax - dependentCredit);
-
+        if (annualIncome <= dependentIncomeLimit) {
+          totalTax = Math.max(
+            0,
+            totalTax - (under17 * 2000 + otherDependents * 500)
+          );
+        }
         if (multipleJobs) totalTax *= 1.05;
 
         const perCheck = totalTax / periods + extra;
 
         return {
+          dependentIncomeLimit: dependentIncomeLimit,
+          annualIncome: annualIncome,
           withholdingPerPaycheck: perCheck.toFixed(2),
           annualWithholding: totalTax.toFixed(2),
         };
