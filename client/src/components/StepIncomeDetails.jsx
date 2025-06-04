@@ -18,15 +18,13 @@ export default function StepIncomeDetails({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
-              Gross Pay
+              Annual Gross Pay
             </label>
           }
           name="grossPay"
           value={form.grossPay}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
-          min={1000}
-          max={1000000}
-          helperText="Enter your gross pay per paycheck, before taxes and deductions."
+          helperText="Enter your total gross pay for the year, before taxes and deductions."
           icon={FaMoneyBillWave}
         />
       </div>
