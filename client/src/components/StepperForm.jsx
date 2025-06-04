@@ -48,9 +48,7 @@ const steps = [
   { title: 'Review & Download', Component: StepReview },
 ];  
 
-  console.log(steps);
   const StepComponent = steps[currentStep].Component;
-  console.log(currentStep);
   return (
     <div className="max-w-4xl w-full mx-auto bg-white shadow-xl rounded-xl px-6 sm:px-10 py-10 space-y-6">
       <StepIndicator steps={steps} current={currentStep} />
