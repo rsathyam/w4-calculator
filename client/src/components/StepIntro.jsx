@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function StepIntro({ onNext }) {
   return (
-    <div className="space-y-4 bg-white p-6 rounded-md shadow">
+    <div className="space-y-4 bg-white p-8 rounded-md shadow">
       <h2 className="text-2xl font-bold text-gray-800">Welcome to the W-4 Calculator</h2>
       <p className="text-gray-700">
         This tool helps you accurately complete the official IRS W-4 form based on your income, dependents,
