@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+jest.mock('@vercel/analytics', () => ({ inject: jest.fn() }));
+jest.mock('jspdf', () => jest.fn());
+
+test('renders app header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const heading = screen.getByRole('heading', {
+    name: /w-4 calculator & form generator/i,
+  });
+  expect(heading).toBeInTheDocument();
 });
