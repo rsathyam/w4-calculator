@@ -44,7 +44,7 @@ export default function StepAdjustments({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
-              Deductions
+              Annual Deductions
             </label>
           }
           name="deductions"
@@ -52,7 +52,7 @@ export default function StepAdjustments({ form, setForm }) {
           onChange={(field, val) => setForm({ ...form, [field]: val })}
           min={0}
           max={100000}
-          helperText="Enter any itemized deductions beyond the standard deduction."
+          helperText="Enter your total itemized deductions for the year beyond the standard deduction."
           icon={FaChartLine}
         />
       </div>
@@ -61,7 +61,7 @@ export default function StepAdjustments({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="otherIncome" className="block text-sm font-medium text-gray-700">
-              Other Income
+              Other Income (Annual)
             </label>
           }
           name="otherIncome"
@@ -69,7 +69,7 @@ export default function StepAdjustments({ form, setForm }) {
           onChange={(field, val) => setForm({ ...form, [field]: val })}
           min={0}
           max={1000000}
-          helperText="Include any other income you expect to receive."
+          helperText="Include any other income you expect to receive this year."
           icon={FaPiggyBank}
         />
       </div>
@@ -79,7 +79,7 @@ export default function StepAdjustments({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="pretaxDeductions" className="block text-sm font-medium text-gray-700">
-              Pre-tax Contributions (e.g. 401(k), HSA)
+              Pre-tax Contributions (Annual, e.g. 401(k), HSA)
             </label>
           }
           name="pretaxDeductions"
@@ -87,7 +87,7 @@ export default function StepAdjustments({ form, setForm }) {
           onChange={(field, val) => setForm({ ...form, [field]: val })}
           min={0}
           max={100000}
-          helperText="Enter any 401(k), HSA, or other pre-tax deductions."
+          helperText="Enter the total annual amount of 401(k), HSA, or other pre-tax contributions."
           icon={FaWallet}
         />
       </div>
