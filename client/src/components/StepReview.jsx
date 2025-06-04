@@ -44,23 +44,31 @@ export default function StepReview({ form, onDownload }) {
   };
 
   const entries = Object.entries({ ...defaults, ...form }).filter(
-    ([k]) => k !== 'step2b',
+    ([k]) => !['step2b', 'step4b'].includes(k),
   );
+
+  const labelMap = {
+    under17: 'Number of Dependents under 17',
+  };
 
   return (
     <div className="space-y-6">
       <h2 className="text-lg font-semibold text-gray-800">Review & Download</h2>
 
       <div className="bg-white rounded shadow-sm border border-gray-200 p-6 space-y-2">
-        {entries.map(([key, value]) => (
-          <div key={key} className="flex justify-between items-center text-sm text-gray-700">
-            <span className="capitalize flex items-center gap-1">
-              <FaRegFileAlt className="text-gray-500" />
-              {key.replace(/([A-Z])/g, ' $1')}
-            </span>
-            <span className="text-right">{formatValue(key, value)}</span>
-          </div>
-        ))}
+        {entries.map(([key, value]) => {
+          const label = labelMap[key] || key.replace(/([A-Z])/g, ' $1');
+          const labelClass = labelMap[key] ? '' : 'capitalize';
+          return (
+            <div key={key} className="flex justify-between items-center text-sm text-gray-700">
+              <span className={`${labelClass} flex items-center gap-1`}>
+                <FaRegFileAlt className="text-gray-500" />
+                {label}
+              </span>
+              <span className="text-right">{formatValue(key, value)}</span>
+            </div>
+          );
+        })}
       </div>
 
       <PaycheckPreview formData={form} />
