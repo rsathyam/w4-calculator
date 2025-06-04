@@ -41,10 +41,6 @@ export default function StepperForm() {
     } catch (err) {
       console.error("Failed to generate PDF:", err);
     }
-    
-    /*
-    const pdf = await DownloadW4(form); // if you’re using IRS template
-    pdf.save('w4_filled.pdf');*/
   };
 
   const StepComponent = steps[currentStep].Component;
