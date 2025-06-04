@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function StepIndicator({ steps, current }) {
   return (
-    <div className="flex items-center justify-between mb-4">
+    <div className="flex items-start justify-between mb-4">
       {steps.map((step, index) => (
         <div key={index} className="flex-1 text-center">
           <div
