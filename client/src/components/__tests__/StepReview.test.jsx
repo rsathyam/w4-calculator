@@ -33,3 +33,12 @@ test('formats currency fields with dollar sign', () => {
   expect(screen.getByText('$20')).toBeInTheDocument();
   expect(screen.getByText('$30')).toBeInTheDocument();
 });
+
+test('shows default values when form is empty', () => {
+  render(<StepReview form={{}} onDownload={() => {}} />);
+  expect(screen.getByText('filing Status')).toBeInTheDocument();
+  expect(screen.getByText('single')).toBeInTheDocument();
+  expect(screen.getByText('pay Frequency')).toBeInTheDocument();
+  expect(screen.getByText('biweekly')).toBeInTheDocument();
+  expect(screen.getAllByText('$0').length).toBeGreaterThan(0);
+});

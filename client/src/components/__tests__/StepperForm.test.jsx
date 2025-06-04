@@ -11,5 +11,7 @@ test('navigates between steps', async () => {
   expect(screen.getByText(/welcome to the w-4 calculator/i)).toBeInTheDocument();
   await userEvent.click(screen.getByText(/next/i));
   // Next step should show filing status heading
-  expect(screen.getByText(/step 2/i)).toBeInTheDocument();
+  expect(
+    screen.getByRole('heading', { name: /filing status/i })
+  ).toBeInTheDocument();
 });
