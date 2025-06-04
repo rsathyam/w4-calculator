@@ -11,17 +11,30 @@ export default function StepAdjustments({ form, setForm }) {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold text-gray-800">Step 4: Adjustments</h2>
-
       <div>
-        <label htmlFor="dependents" className="block text-sm font-medium text-gray-700">
-          Dependents
+        <label htmlFor="under17" className="block text-sm font-medium text-gray-700">
+          Dependents Under 17
         </label>
         <input
-          id="dependents"
+          id="under17"
           type="number"
           min="0"
-          value={form.dependents || ''}
-          onChange={(e) => handleNumberChange(e, 'dependents')}
+          value={form.under17 || ''}
+          onChange={(e) => handleNumberChange(e, 'under17')}
+          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
+          placeholder="0"
+        />
+      </div>
+      <div>
+        <label htmlFor="otherDependents" className="block text-sm font-medium text-gray-700">
+          Other Dependents
+        </label>
+        <input
+          id="otherDependents"
+          type="number"
+          min="0"
+          value={form.otherDependents || ''}
+          onChange={(e) => handleNumberChange(e, 'otherDependents')}
           className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
           placeholder="0"
         />

@@ -18,7 +18,8 @@ export default function PaycheckPreview({ formData }) {
         const gross = Math.max(0, parseFloat(data.grossPay));
         const freq = data.payFrequency || 'biweekly';
         const filingStatus = (data.filingStatus || 'single').toLowerCase();
-        const dependents = Math.max(0, parseInt(data.dependents || 0));
+        const under17 = Math.max(0, parseInt(data.under17 || 0));
+        const otherDependents = Math.max(0, parseInt(data.otherDependents || 0));
         const deductions = Math.max(0, parseFloat(data.deductions || 0));
         const extra = Math.max(0, parseFloat(data.extraWithholding || 0));
         const multipleJobs = !!data.multipleJobs;
@@ -91,7 +92,11 @@ export default function PaycheckPreview({ formData }) {
         };
 
         let totalTax = calcTax(taxable, brackets);
-        totalTax = Math.max(0, totalTax - dependents * 2000);
+
+        // Dependent credits
+        const dependentCredit = (under17 * 2000) + (otherDependents * 500);
+        totalTax = Math.max(0, totalTax - dependentCredit);
+
         if (multipleJobs) totalTax *= 1.05;
 
         const perCheck = totalTax / periods + extra;
