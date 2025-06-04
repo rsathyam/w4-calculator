@@ -3,7 +3,36 @@ import { FaRegFileAlt } from 'react-icons/fa';
 import PaycheckPreview from './PaycheckPreview';
 
 export default function StepReview({ form, onDownload }) {
-  const currencyFields = ['grossPay', 'extraWithholding', 'secondJobIncome', 'spouseIncome'];
+  const defaults = {
+    filingStatus: 'single',
+    payFrequency: 'biweekly',
+    grossPay: '',
+    multipleJobs: false,
+    exempt: false,
+    secondJobIncome: '',
+    spouseIncome: '',
+    jobCount: 0,
+    itemizedDeductions: 0,
+    adjustmentDeductions: 0,
+    deductions: 0,
+    under17: 0,
+    otherDependents: 0,
+    otherIncome: 0,
+    pretaxDeductions: 0,
+    extraWithholding: 0,
+  };
+
+  const currencyFields = [
+    'grossPay',
+    'extraWithholding',
+    'secondJobIncome',
+    'spouseIncome',
+    'otherIncome',
+    'pretaxDeductions',
+    'itemizedDeductions',
+    'adjustmentDeductions',
+    'deductions',
+  ];
 
   const formatValue = (key, value) => {
     if (currencyFields.includes(key)) {
@@ -14,7 +43,9 @@ export default function StepReview({ form, onDownload }) {
     return String(value) || '—';
   };
 
-  const entries = Object.entries(form).filter(([k]) => k !== 'step2b');
+  const entries = Object.entries({ ...defaults, ...form }).filter(
+    ([k]) => k !== 'step2b',
+  );
 
   return (
     <div className="space-y-6">

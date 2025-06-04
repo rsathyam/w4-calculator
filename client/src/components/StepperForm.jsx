@@ -16,7 +16,26 @@ import jsPDF from 'jspdf';
 
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [form, setForm] = useState({});
+  const defaultForm = {
+    filingStatus: 'single',
+    payFrequency: 'biweekly',
+    grossPay: '',
+    multipleJobs: false,
+    exempt: false,
+    secondJobIncome: '',
+    spouseIncome: '',
+    jobCount: 0,
+    itemizedDeductions: 0,
+    adjustmentDeductions: 0,
+    deductions: 0,
+    under17: 0,
+    otherDependents: 0,
+    otherIncome: 0,
+    pretaxDeductions: 0,
+    extraWithholding: 0,
+  };
+
+  const [form, setForm] = useState(defaultForm);
 
   const goNext = () => setCurrentStep((s) => Math.min(s + 1, steps.length - 1));
   const goBack = () => setCurrentStep((s) => Math.max(s - 1, 0));
