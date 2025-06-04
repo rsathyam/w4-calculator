@@ -19,7 +19,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Step 4b: Deductions Worksheet</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Deductions</h2>
 
       <CurrencyInput
         label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated itemized deductions</label>}

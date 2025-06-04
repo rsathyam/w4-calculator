@@ -12,7 +12,7 @@ export default function StepIncomeDetails({ form, setForm }) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Step 3: Pay & Withholding</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Pay & Withholding</h2>
 
       <div>
         <CurrencyInput

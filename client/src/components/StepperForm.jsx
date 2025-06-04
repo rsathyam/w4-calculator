@@ -45,7 +45,7 @@ const steps = [
   ...(form.multipleJobs
     ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
     : []),
-  { title: 'Deductions Worksheet', Component: StepDeductionsWorksheet },
+  { title: 'Deductions', Component: StepDeductionsWorksheet },
   { title: 'Adjustments', Component: StepAdjustments },
   { title: 'Review & Download', Component: StepReview },
 ];

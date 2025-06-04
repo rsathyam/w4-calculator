@@ -18,7 +18,7 @@ export default function StepReview({ form, onDownload }) {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-lg font-semibold text-gray-800">Step 5: Review & Download</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Review & Download</h2>
 
       <div className="bg-white rounded shadow-sm border border-gray-200 p-4 space-y-2">
         {entries.map(([key, value]) => (

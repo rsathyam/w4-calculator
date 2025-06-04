@@ -10,7 +10,7 @@ export default function StepAdjustments({ form, setForm }) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Step 4: Adjustments</h2>
+      <h2 className="text-lg font-semibold text-gray-800">Adjustments</h2>
       <div>
         <label htmlFor="under17" className="block text-sm font-medium text-gray-700">
           Dependents Under 17
