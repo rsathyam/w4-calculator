@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react';
 import CurrencyInput from './CurrencyInput';
+import { calculateStep4b } from './utils/calculateStep4b';
 
 export default function StepDeductionsWorksheet({ form, setForm }) {
-  const stdMap = { single: 14600, married: 29200, head: 21900 };
   const filing = form.filingStatus || 'single';
-  const standardDeduction = stdMap[filing] || stdMap.single;
 
-  const line1 = parseInt(form.itemizedDeductions || 0);
-  const line4 = parseInt(form.adjustmentDeductions || 0);
-  const line3 = Math.max(0, line1 - standardDeduction);
-  const line5 = line3 + line4;
+  const { line1, line2, line3, line4, line5 } = calculateStep4b({
+    filingStatus: filing,
+    itemizedDeductions: form.itemizedDeductions,
+    adjustmentDeductions: form.adjustmentDeductions,
+  });
 
   useEffect(() => {
-    if (form.deductions !== line5) {
-      setForm((f) => ({ ...f, deductions: line5 }));
+    const step4b = { line1, line2, line3, line4, line5 };
+    if (
+      JSON.stringify(form.step4b) !== JSON.stringify(step4b) ||
+      form.deductions !== line5
+    ) {
+      setForm((f) => ({ ...f, step4b, deductions: line5 }));
     }
-  }, [line1, line4, filing]);
+  }, [line1, line2, line3, line4, line5]);
 
   return (
     <div className="space-y-4">
