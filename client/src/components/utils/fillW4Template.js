@@ -24,6 +24,13 @@ export async function fillW4Template(formData) {
     form.getCheckBox('topmostSubform[0].Page1[0].c1_2[0]').check();
   }
 
+  const under17 = formData.under17 || 0;
+  form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_06[0]').setText(formData.under17 * 2000)
+
+  if (formData.under17 === true) {
+
+  }
+
 
 //  form.getTextField('topmostSubform[0].Page1[0].f1_09[0]').setText(String(formData.dependents || ''));
 //  form.getTextField('topmostSubform[0].Page1[0].f1_10[0]').setText(String(formData.otherIncome || ''));
