@@ -66,6 +66,22 @@ export async function fillW4Template(formData) {
     form.getTextField('topmostSubform[0].Page3[0].f3_05[0]').setText(line3.toString());
     form.getTextField('topmostSubform[0].Page3[0].f3_06[0]').setText(line4.toString());
   }
+
+  if (formData.step4b) {
+    const {
+      line1 = 0,
+      line2 = 0,
+      line3 = 0,
+      line4 = 0,
+      line5 = 0,
+    } = formData.step4b;
+
+    form.getTextField('topmostSubform[0].Page3[0].f3_07[0]').setText(line1.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_08[0]').setText(line2.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_09[0]').setText(line3.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_10[0]').setText(line4.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_11[0]').setText(line5.toString());
+  }
   form.flatten();
 
   const pdfBytes = await pdfDoc.save();
