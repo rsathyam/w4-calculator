@@ -1,11 +1,13 @@
 
 export function calculateTax(filingStatus, annualIncome, deductions) {
+    // Standard deduction amounts for the 2025 tax year
+    // Source: Form W-4 (2025)
     const stdDeductionMap = {
-        single: 14600,
-        married: 29200,
-        head: 21900,
+        single: 15000,
+        married: 30000,
+        head: 22500,
     };
-    const stdDeduction = stdDeductionMap[filingStatus] || 14600;    
+    const stdDeduction = stdDeductionMap[filingStatus] || stdDeductionMap.single;
     const taxBrackets = {
         single: [
             [0, 0.10],
