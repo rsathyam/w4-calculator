@@ -48,6 +48,24 @@ export async function fillW4Template(formData) {
   //Set Extra Withholding
   const extraWithholding = formData.extraWithholding || 0;
   form.getTextField('topmostSubform[0].Page1[0].f1_12[0]').setText(extraWithholding.toString());
+
+  if (formData.step2b) {
+    const {
+      line1 = 0,
+      line2a = 0,
+      line2b = 0,
+      line2c = 0,
+      line3 = 0,
+      line4 = 0,
+    } = formData.step2b;
+
+    form.getTextField('topmostSubform[0].Page3[0].f3_01[0]').setText(line1.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_02[0]').setText(line2a.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_03[0]').setText(line2b.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_04[0]').setText(line2c.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_05[0]').setText(line3.toString());
+    form.getTextField('topmostSubform[0].Page3[0].f3_06[0]').setText(line4.toString());
+  }
   form.flatten();
 
   const pdfBytes = await pdfDoc.save();
