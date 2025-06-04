@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { calculateTax } from './utils/calculateTax';
+import { calculateIncome } from './utils/calculateIncome';
 
 export default function PaycheckPreview({ formData }) {
   const [preview, setPreview] = useState(null);
@@ -27,16 +28,7 @@ export default function PaycheckPreview({ formData }) {
         const otherIncome = Math.max(0, parseFloat(data.otherIncome || 0));
         const pretax = Math.max(0, parseFloat(data.pretaxDeductions || 0));
 
-        const freqMap = {
-          weekly: 52,
-          biweekly: 26,
-          semimonthly: 24,
-          monthly: 12,
-        };
-        const periods = freqMap[freq] || 26;
-
-        const annualIncome = gross * periods + otherIncome - pretax;
-
+        const annualIncome = calculateIncome(gross, otherIncome, pretax);
         const totalTax = calculateTax(filingStatus, annualIncome, deductions);
         const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
 
