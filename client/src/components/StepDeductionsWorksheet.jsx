@@ -26,7 +26,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       <h2 className="text-lg font-semibold text-gray-800">Deductions</h2>
 
       <CurrencyInput
-        label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated itemized deductions</label>}
+        label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated Itemized Deductions</label>}
         name="itemizedDeductions"
         value={form.itemizedDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -34,7 +34,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         max={1000000}
       />
       <CurrencyInput
-        label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other adjustments to income</label>}
+        label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other Adjustments to Income</label>}
         name="adjustmentDeductions"
         value={form.adjustmentDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -43,7 +43,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       />
 
         <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-          <p className="text-sm text-blue-800">Total deductions (beyond standard deduction): ${line5.toLocaleString()}</p>
+          <p className="text-sm text-blue-800">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
         </div>
     </div>
   );

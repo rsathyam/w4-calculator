@@ -35,7 +35,7 @@ export default function StepPersonalInfo({ form, setForm }) {
 
       <div>
         <label htmlFor="ssn" className="block text-sm font-medium text-gray-700">
-          SSN (Last 4 digits)
+          SSN (Last 4 Digits)
         </label>
         <input
           id="ssn"

@@ -37,7 +37,7 @@ export default function StepMultipleJobs({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
-              Income from second job
+              Income from Second Job
             </label>
           }
           name="secondJobIncome"
@@ -52,7 +52,7 @@ export default function StepMultipleJobs({ form, setForm }) {
         <CurrencyInput
           label={
             <label htmlFor="spouseIncome" className="block text-sm font-medium text-gray-700">
-              Spouse's income
+              Spouse's Income
             </label>
           }
           name="spouseIncome"
@@ -65,7 +65,7 @@ export default function StepMultipleJobs({ form, setForm }) {
 
       <div>
         <label className="block text-sm font-medium text-gray-700">
-          Total household job count
+          Total Household Job Count
         </label>
         <input
           type="number"
@@ -80,7 +80,7 @@ export default function StepMultipleJobs({ form, setForm }) {
       {form.step2b && (
         <div className="p-3 bg-blue-50 border border-blue-200 rounded">
           <p className="text-sm text-blue-800">
-            Estimated extra withholding per paycheck:{' '}
+            Estimated Extra Withholding per Paycheck:{' '}
             <strong>${form.step2b.line4}</strong>
           </p>
         </div>

@@ -37,7 +37,7 @@ export default function StepIncomeDetails({ form, setForm }) {
           onChange={(e) => setForm({ ...form, multipleJobs: e.target.checked })}
         />
         <label htmlFor="multipleJobs" className="text-sm text-gray-700">
-          Multiple jobs or spouse works?
+          Multiple Jobs or Spouse Works?
         </label>
       </div>
 
@@ -49,7 +49,7 @@ export default function StepIncomeDetails({ form, setForm }) {
           onChange={(e) => setForm({ ...form, exempt: e.target.checked })}
         />
         <label htmlFor="exempt" className="text-sm text-gray-700">
-          Exempt from withholding?
+          Exempt from Withholding?
         </label>
       </div>
     </div>
