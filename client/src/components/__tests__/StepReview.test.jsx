@@ -34,6 +34,13 @@ test('formats currency fields with dollar sign', () => {
   expect(screen.getByText('$30')).toBeInTheDocument();
 });
 
+test('formats pretax deductions with dollar sign and commas', () => {
+  render(
+    <StepReview form={{ pretaxDeductions: 12345 }} onDownload={() => {}} />,
+  );
+  expect(screen.getByText('$12,345')).toBeInTheDocument();
+});
+
 test('shows default values when form is empty', () => {
   render(<StepReview form={{}} onDownload={() => {}} />);
   expect(screen.getByText('filing Status')).toBeInTheDocument();
