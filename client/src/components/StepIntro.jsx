@@ -3,7 +3,7 @@ import React from 'react';
 export default function StepIntro({ onNext }) {
   return (
     <div className="mb-3 d-flex flex-column justify-content-between h-100 gap-3">
-      <h2 className="h5 fw-bold text-dark">Welcome to the W-4 Calculator</h2>
+      <h2 className="h5 fw-bold text-dark text-center mb-4">Welcome to the W-4 Calculator</h2>
       <p>
         This tool helps you accurately complete the official IRS W-4 form based on your income, dependents,
         deductions, and withholding preferences. It uses 2025 tax brackets and works entirely in your browser.
