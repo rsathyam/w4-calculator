@@ -66,23 +66,23 @@ export default function PaycheckPreview({ formData }) {
   }, [formData]);
 
   return (
-    <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 shadow-sm space-y-3 transition-all">
-      <h2 className="text-xl font-semibold text-blue-800">Paycheck Preview</h2>
+    <div className="bg-light border rounded p-3 shadow-sm mb-3">
+      <h2 className="h5 fw-semibold text-primary">Paycheck Preview</h2>
 
-      {preview?.error && <p className="text-red-600">{preview.error}</p>}
+      {preview?.error && <p className="text-danger">{preview.error}</p>}
 
       {!preview?.error && (
         <>
           <p>
             <strong>Withholding per Paycheck:</strong>{' '}
-            <span className="text-green-700">${preview?.withholdingPerPaycheck}</span>
+            <span className="text-success">${preview?.withholdingPerPaycheck}</span>
           </p>
           <p>
             <strong>Annual Withholding:</strong>{' '}
-            <span className="text-green-700">${preview?.annualWithholding}</span>
+            <span className="text-success">${preview?.annualWithholding}</span>
           </p>
           {preview?.note && (
-            <p className="text-sm italic text-blue-700 mt-1">{preview.note}</p>
+            <p className="small fst-italic text-primary mt-1">{preview.note}</p>
           )}
         </>
       )}

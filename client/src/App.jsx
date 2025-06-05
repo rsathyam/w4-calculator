@@ -1,13 +1,13 @@
 import React from 'react';
 import StepperForm from './components/StepperForm';
-import './index.css'; // Tailwind styles
+import './index.css';
 import { inject } from '@vercel/analytics';
 inject();
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-      <h1 className="text-3xl font-bold text-center text-blue-800 mb-8">
+    <div className="min-vh-100 bg-light py-4">
+      <h1 className="h3 fw-bold text-center text-primary mb-4">
         W-4 Calculator & Form Generator
       </h1>
       <StepperForm />

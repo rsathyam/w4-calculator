@@ -11,22 +11,18 @@ export default function StepIncomeDetails({ form, setForm }) {
   };
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Pay & Withholding</h2>
+    <div className="mb-3">
+      <h2 className="h5 fw-semibold text-dark">Pay & Withholding</h2>
 
       <div>
-        <label
-          htmlFor="filingStatus"
-          className="block text-sm font-medium text-gray-700"
-          title="Select your tax filing status"
-        >
+        <label htmlFor="filingStatus" className="form-label" title="Select your tax filing status">
           Filing Status
         </label>
         <select
           id="filingStatus"
           value={form.filingStatus || 'single'}
           onChange={(e) => setForm({ ...form, filingStatus: e.target.value })}
-          className="mt-1 block w-full sm:max-w-xs rounded border border-gray-300 px-3 py-2 pr-8"
+          className="form-select"
         >
           <option value="single">Single or Married Filing Separately</option>
           <option value="married">Married Filing Jointly</option>
@@ -54,14 +50,14 @@ export default function StepIncomeDetails({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="payFrequency" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="payFrequency" className="form-label">
           Pay Frequency
         </label>
         <select
           id="payFrequency"
           value={form.payFrequency || 'biweekly'}
           onChange={(e) => setForm({ ...form, payFrequency: e.target.value })}
-          className="mt-1 block w-full rounded border border-gray-300 px-3 py-2 pr-8"
+          className="form-select"
         >
           <option value="weekly">Weekly</option>
           <option value="biweekly">Biweekly</option>
@@ -70,26 +66,28 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="flex items-center space-x-2">
+      <div className="form-check">
         <input
+          className="form-check-input"
           type="checkbox"
           id="multipleJobs"
           checked={form.multipleJobs || false}
           onChange={(e) => setForm({ ...form, multipleJobs: e.target.checked })}
         />
-        <label htmlFor="multipleJobs" className="text-sm text-gray-700">
+        <label htmlFor="multipleJobs" className="form-check-label">
           Multiple Jobs or Spouse Works?
         </label>
       </div>
 
-      <div className="flex items-center space-x-2">
+      <div className="form-check">
         <input
+          className="form-check-input"
           type="checkbox"
           id="exempt"
           checked={form.exempt || false}
           onChange={(e) => setForm({ ...form, exempt: e.target.checked })}
         />
-        <label htmlFor="exempt" className="text-sm text-gray-700">
+        <label htmlFor="exempt" className="form-check-label">
           Exempt from Withholding?
         </label>
       </div>

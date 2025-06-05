@@ -6,5 +6,5 @@ test('highlights the current step', () => {
   render(<StepIndicator steps={steps} current={1} />);
   expect(screen.getByText('One')).toBeInTheDocument();
   const current = screen.getByText('Two');
-  expect(current.className).toMatch(/text-blue-600/);
+  expect(current.className).toMatch(/text-primary/);
 });

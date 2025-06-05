@@ -30,8 +30,8 @@ export default function StepMultipleJobs({ form, setForm }) {
   ]);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-blue-800">Multiple Jobs Worksheet</h2>
+    <div className="mb-3">
+      <h2 className="h5 fw-semibold text-primary">Multiple Jobs Worksheet</h2>
 
       <div>
         <CurrencyInput
@@ -43,7 +43,7 @@ export default function StepMultipleJobs({ form, setForm }) {
           name="secondJobIncome"
           value={form.secondJobIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
-          className="w-full px-3 py-2 border rounded-md shadow-sm"
+          className="form-control"
           helperText="Enter your income from a second job, if you have one"
         />
       </div>
@@ -58,13 +58,13 @@ export default function StepMultipleJobs({ form, setForm }) {
           name="spouseIncome"
           value={form.spouseIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
-          className="w-full px-3 py-2 border rounded-md shadow-sm"
+          className="form-control"
           helperText="Enter your spouse's income"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="form-label">
           Total Household Job Count
         </label>
         <input
@@ -72,15 +72,15 @@ export default function StepMultipleJobs({ form, setForm }) {
           name="jobCount"
           value={form.jobCount || ''}
           onChange={(e) => setForm({ ...form, jobCount: e.target.value })}
-          className="w-full px-3 py-2 border rounded-md shadow-sm"
+          className="form-control"
           placeholder="e.g. 2"
         />
       </div>
 
       {form.step2b && (
-        <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-          <p className="text-sm text-blue-800">
-            Estimated Extra Withholding per Paycheck:{' '}
+        <div className="p-3 bg-light border rounded">
+          <p className="small text-primary">
+            Estimated Extra Withholding per Paycheck{' '}
             <strong>${form.step2b.line4}</strong>
           </p>
         </div>

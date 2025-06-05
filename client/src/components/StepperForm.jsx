@@ -67,16 +67,16 @@ const steps = [
 
   const StepComponent = steps[currentStep].Component;
   return (
-    <div className="max-w-6xl w-full mx-auto bg-white shadow-xl rounded-xl px-8 sm:px-12 py-12 space-y-6">
+    <div className="container bg-white shadow rounded p-4 my-4">
       <StepIndicator steps={steps} current={currentStep} />
       <StepComponent form={form} setForm={setForm} />
 
-      <div className="flex justify-between items-center mt-6 px-4">
+      <div className="d-flex justify-content-between align-items-center mt-4 px-2">
         <button
           type="button"
           onClick={goBack}
           disabled={currentStep === 0}
-          className="px-4 py-2 rounded border border-gray-400 text-gray-700 disabled:opacity-30"
+          className="btn btn-secondary"
         >
           Back
         </button>
@@ -84,7 +84,7 @@ const steps = [
           <button
             type="button"
             onClick={goNext}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+            className="btn btn-primary"
           >
             Next
           </button>
@@ -92,7 +92,7 @@ const steps = [
           <button
             type="button"
             onClick={handleDownload}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+            className="btn btn-primary"
           >
             Download Completed W-4 Form (PDF)
           </button>
