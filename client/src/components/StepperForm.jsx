@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import StepIndicator from './StepIndicator';
 import StepPersonalInfo from './StepPersonalInfo';
 import StepMultipleJobs from './StepMultipleJobs';
-import StepFilingStatus from './StepFilingStatus';
 import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
 import StepDeductionsWorksheet from './StepDeductionsWorksheet';
@@ -17,6 +16,11 @@ import jsPDF from 'jspdf';
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const defaultForm = {
+    firstName: '',
+    lastName: '',
+    address: '',
+    cityStateZip: '',
+    ssn: '',
     filingStatus: 'single',
     payFrequency: 'biweekly',
     grossPay: '',
@@ -58,8 +62,7 @@ export default function StepperForm() {
 
 const steps = [
   { title: 'Welcome', Component: StepIntro },
-//  { title: 'Personal Info', Component: StepPersonalInfo },
-  { title: 'Filing Status', Component: StepFilingStatus },
+  { title: 'Personal Info', Component: StepPersonalInfo },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
   ...(form.multipleJobs
     ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
