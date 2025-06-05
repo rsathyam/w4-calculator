@@ -33,7 +33,7 @@ export default function StepMultipleJobs({ form, setForm }) {
     <div className="mb-3">
       <h2 className="h5 fw-semibold text-primary">Multiple Jobs Worksheet</h2>
 
-      <div>
+      <div className="mb-3">
         <CurrencyInput
           label={
             <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
@@ -48,7 +48,7 @@ export default function StepMultipleJobs({ form, setForm }) {
         />
       </div>
 
-      <div>
+      <div className="mb-3">
         <CurrencyInput
           label={
             <label htmlFor="spouseIncome" className="block text-sm font-medium text-gray-700">
@@ -63,7 +63,7 @@ export default function StepMultipleJobs({ form, setForm }) {
         />
       </div>
 
-      <div>
+      <div className="mb-3">
         <label className="form-label">
           Total Household Job Count
         </label>
@@ -78,7 +78,7 @@ export default function StepMultipleJobs({ form, setForm }) {
       </div>
 
       {form.step2b && (
-        <div className="p-3 bg-light border rounded">
+        <div className="p-3 bg-light border rounded mb-3">
           <p className="small text-primary">
             Estimated Extra Withholding per Paycheck{' '}
             <strong>${form.step2b.line4}</strong>
