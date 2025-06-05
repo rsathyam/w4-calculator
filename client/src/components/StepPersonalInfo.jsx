@@ -6,7 +6,11 @@ export default function StepPersonalInfo({ form, setForm }) {
       <h2 className="text-lg font-semibold text-gray-800">Personal Information</h2>
 
       <div>
-        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="firstName"
+          className="block text-sm font-medium text-gray-700"
+          title="Enter your first name"
+        >
           First Name
         </label>
         <input
@@ -20,7 +24,11 @@ export default function StepPersonalInfo({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="lastName"
+          className="block text-sm font-medium text-gray-700"
+          title="Enter your last name"
+        >
           Last Name
         </label>
         <input
@@ -34,7 +42,11 @@ export default function StepPersonalInfo({ form, setForm }) {
       </div>
 
       <div>
-        <label htmlFor="ssn" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="ssn"
+          className="block text-sm font-medium text-gray-700"
+          title="Enter the last four digits of your SSN"
+        >
           SSN (Last 4 digits)
         </label>
         <input

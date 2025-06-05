@@ -17,7 +17,11 @@ export default function StepIncomeDetails({ form, setForm }) {
       <div>
         <CurrencyInput
           label={
-            <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="grossPay"
+              className="block text-sm font-medium text-gray-700"
+              title="Your yearly income before taxes"
+            >
               Annual Gross Pay
             </label>
           }
@@ -53,7 +57,11 @@ export default function StepIncomeDetails({ form, setForm }) {
           checked={form.multipleJobs || false}
           onChange={(e) => setForm({ ...form, multipleJobs: e.target.checked })}
         />
-        <label htmlFor="multipleJobs" className="text-sm text-gray-700">
+        <label
+          htmlFor="multipleJobs"
+          className="text-sm text-gray-700"
+          title="Check if you have more than one job or your spouse works"
+        >
           Multiple jobs or spouse works?
         </label>
       </div>
@@ -65,7 +73,11 @@ export default function StepIncomeDetails({ form, setForm }) {
           checked={form.exempt || false}
           onChange={(e) => setForm({ ...form, exempt: e.target.checked })}
         />
-        <label htmlFor="exempt" className="text-sm text-gray-700">
+        <label
+          htmlFor="exempt"
+          className="text-sm text-gray-700"
+          title="Check if you are exempt from federal withholding"
+        >
           Exempt from withholding?
         </label>
       </div>

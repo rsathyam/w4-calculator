@@ -69,6 +69,7 @@ export default function CurrencyInput({
         onChange={handleChange}
         onBlur={handleBlur}
         placeholder="$0"
+        title={helperText}
         className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
           error
             ? 'border-red-500 focus:ring-red-500'

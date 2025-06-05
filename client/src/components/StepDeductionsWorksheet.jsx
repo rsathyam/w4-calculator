@@ -26,20 +26,30 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       <h2 className="text-lg font-semibold text-gray-800">Deductions</h2>
 
       <CurrencyInput
-        label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated itemized deductions</label>}
+        label={
+          <span title="Estimated total of your itemized deductions">
+            Estimated itemized deductions
+          </span>
+        }
         name="itemizedDeductions"
         value={form.itemizedDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
         min={0}
         max={1000000}
+        helperText="Amount of itemized deductions beyond the standard deduction"
       />
       <CurrencyInput
-        label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other adjustments to income</label>}
+        label={
+          <span title="Adjustments that reduce your taxable income">
+            Other adjustments to income
+          </span>
+        }
         name="adjustmentDeductions"
         value={form.adjustmentDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
         min={0}
         max={1000000}
+        helperText="Other adjustments that reduce income"
       />
 
         <div className="p-3 bg-blue-50 border border-blue-200 rounded">
