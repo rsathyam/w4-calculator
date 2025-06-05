@@ -10,9 +10,9 @@ test('navigates between steps', async () => {
   // First step shows intro heading
   expect(screen.getByText(/welcome to the w-4 calculator/i)).toBeInTheDocument();
   await userEvent.click(screen.getByText(/next/i));
-  // Next step should show filing status heading
+  // Next step should show pay and withholding heading
   expect(
-    screen.getByRole('heading', { name: /filing status/i })
+    screen.getByRole('heading', { name: /pay & withholding/i })
   ).toBeInTheDocument();
 });
 
