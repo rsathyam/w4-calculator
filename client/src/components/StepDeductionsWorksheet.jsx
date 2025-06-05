@@ -42,9 +42,9 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         max={1000000}
       />
 
-      <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-        <p className="text-sm text-blue-800">Total deductions: ${line5.toLocaleString()}</p>
-      </div>
+        <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+          <p className="text-sm text-blue-800">Total deductions (beyond standard deduction): ${line5.toLocaleString()}</p>
+        </div>
     </div>
   );
 }
