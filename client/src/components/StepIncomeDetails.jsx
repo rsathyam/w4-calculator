@@ -14,7 +14,7 @@ export default function StepIncomeDetails({ form, setForm }) {
     <div className="mb-3">
       <h2 className="h5 fw-semibold text-dark">Pay & Withholding</h2>
 
-      <div>
+      <div className="mb-3">
         <label htmlFor="filingStatus" className="form-label" title="Select your tax filing status">
           Filing Status
         </label>
@@ -30,7 +30,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div>
+      <div className="mb-3">
         <CurrencyInput
           label={
             <label
@@ -49,7 +49,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         />
       </div>
 
-      <div>
+      <div className="mb-3">
         <label htmlFor="payFrequency" className="form-label">
           Pay Frequency
         </label>
@@ -66,7 +66,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="form-check">
+      <div className="form-check mb-3">
         <input
           className="form-check-input"
           type="checkbox"
@@ -79,7 +79,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </label>
       </div>
 
-      <div className="form-check">
+      <div className="form-check mb-3">
         <input
           className="form-check-input"
           type="checkbox"
