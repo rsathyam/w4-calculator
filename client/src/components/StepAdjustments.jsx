@@ -1,6 +1,6 @@
 import React from 'react';
 import CurrencyInput from './CurrencyInput';
-import { FaPiggyBank, FaWallet, FaChartLine, FaDollarSign } from 'react-icons/fa';
+import { FaPiggyBank, FaWallet, FaDollarSign } from 'react-icons/fa';
 
 export default function StepAdjustments({ form, setForm }) {
   const handleNumberChange = (e, key) => {
@@ -40,22 +40,6 @@ export default function StepAdjustments({ form, setForm }) {
         />
       </div>
 
-      <div>
-        <CurrencyInput
-          label={
-            <label htmlFor="deductions" className="block text-sm font-medium text-gray-700">
-              Annual Deductions
-            </label>
-          }
-          name="deductions"
-          value={form.deductions}
-          onChange={(field, val) => setForm({ ...form, [field]: val })}
-          min={0}
-          max={100000}
-          helperText="Enter your total itemized deductions for the year beyond the standard deduction."
-          icon={FaChartLine}
-        />
-      </div>
 
       <div>
         <CurrencyInput
