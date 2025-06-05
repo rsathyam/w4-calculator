@@ -28,7 +28,7 @@ export default function StepIncomeDetails({ form, setForm }) {
           onChange={(e) => setForm({ ...form, filingStatus: e.target.value })}
           className="mt-1 block w-full sm:max-w-xs rounded border border-gray-300 px-3 py-2 pr-8"
         >
-          <option value="single">Single</option>
+          <option value="single">Single or Married Filing Separately</option>
           <option value="married">Married Filing Jointly</option>
           <option value="head">Head of Household</option>
         </select>
