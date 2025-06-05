@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import StepIndicator from './StepIndicator';
-import StepPersonalInfo from './StepPersonalInfo';
 import StepMultipleJobs from './StepMultipleJobs';
 import StepIncomeDetails from './StepIncomeDetails';
 import StepAdjustments from './StepAdjustments';
@@ -57,7 +56,6 @@ export default function StepperForm() {
 
 const steps = [
   { title: 'Welcome', Component: StepIntro },
-  { title: 'Filing Status', Component: StepPersonalInfo },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
   ...(form.multipleJobs
     ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
