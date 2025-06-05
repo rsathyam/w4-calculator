@@ -1,106 +1,49 @@
-import React from 'react';
-import { FaRegFileAlt } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
 import PaycheckPreview from './PaycheckPreview';
+import { fillW4Template } from './utils/fillW4Template';
 
 export default function StepReview({ form, onDownload }) {
-  const defaults = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    cityStateZip: '',
-    ssn: '',
-    filingStatus: 'single',
-    payFrequency: 'biweekly',
-    grossPay: '',
-    multipleJobs: false,
-    exempt: false,
-    secondJobIncome: '',
-    spouseIncome: '',
-    jobCount: 0,
-    itemizedDeductions: 0,
-    adjustmentDeductions: 0,
-    deductions: 0,
-    under17: 0,
-    otherDependents: 0,
-    otherIncome: 0,
-    pretaxDeductions: 0,
-    extraWithholding: 0,
-  };
+  const [pdfUrl, setPdfUrl] = useState(null);
 
-  const currencyFields = [
-    'grossPay',
-    'extraWithholding',
-    'secondJobIncome',
-    'spouseIncome',
-    'otherIncome',
-    'pretaxDeductions',
-    'itemizedDeductions',
-    'adjustmentDeductions',
-    'deductions',
-  ];
-
-  const formatValue = (key, value) => {
-    if (currencyFields.includes(key)) {
-      const num = parseFloat(value);
-      if (isNaN(num)) return '$0';
-      return `$${num.toLocaleString()}`;
-    }
-    return String(value) || '—';
-  };
-
-  const { step2b, step4b, ...filteredForm } = { ...defaults, ...form };
-  const entries = Object.entries(filteredForm);
-
-  const labelMap = {
-    under17: 'Number of Dependents Under 17',
-  };
-
-  const smallWords = [
-    'and',
-    'or',
-    'the',
-    'a',
-    'an',
-    'in',
-    'on',
-    'with',
-    'from',
-    'to',
-    'per',
-    'of',
-  ];
-
-  const toTitleCase = (text) =>
-    text
-      .split(' ')
-      .map((word) =>
-        smallWords.includes(word.toLowerCase())
-          ? word.toLowerCase()
-          : word.charAt(0).toUpperCase() + word.slice(1)
-      )
-      .join(' ');
+  useEffect(() => {
+    let url;
+    const generate = async () => {
+      try {
+        if (
+          typeof window === 'undefined' ||
+          !window.URL ||
+          typeof window.URL.createObjectURL !== 'function'
+        ) {
+          setPdfUrl(null);
+          return;
+        }
+        const pdfBytes = await fillW4Template(form);
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+        url = window.URL.createObjectURL(blob);
+        setPdfUrl(url);
+      } catch (err) {
+        console.error('Failed to generate PDF preview:', err);
+      }
+    };
+    generate();
+    return () => {
+      if (url && window.URL && typeof window.URL.revokeObjectURL === 'function') {
+        window.URL.revokeObjectURL(url);
+      }
+    };
+  }, [form]);
 
   return (
     <div className="space-y-6">
       <h2 className="text-lg font-semibold text-gray-800">Review & Download</h2>
 
-      <div className="bg-white rounded shadow-sm border border-gray-200 p-6 space-y-2">
-        {entries.map(([key, value]) => {
-          const rawLabel = labelMap[key] || key.replace(/([A-Z])/g, ' $1');
-          const label = toTitleCase(rawLabel);
-          return (
-            <div key={key} className="flex justify-between items-center text-sm text-gray-700">
-              <span className="flex items-center gap-1">
-                <FaRegFileAlt className="text-gray-500" />
-                {label}
-              </span>
-              <span className="text-right">{formatValue(key, value)}</span>
-            </div>
-          );
-        })}
-      </div>
-
       <PaycheckPreview formData={form} />
+
+      {pdfUrl && (
+        <div className="bg-white rounded shadow-sm border border-gray-200 p-4">
+          <iframe title="W-4 PDF Preview" src={pdfUrl} className="w-full h-96" />
+        </div>
+      )}
 
       <div className="pt-4">
         <button
