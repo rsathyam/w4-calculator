@@ -67,9 +67,14 @@ const steps = [
 
   const StepComponent = steps[currentStep].Component;
   return (
-    <div className="container bg-white shadow rounded p-4 my-4" style={{ minHeight: '70vh' }}>
+    <div
+      className="container bg-white shadow rounded p-4 my-4 d-flex flex-column"
+      style={{ minHeight: '70vh' }}
+    >
       <StepIndicator steps={steps} current={currentStep} />
-      <StepComponent form={form} setForm={setForm} />
+      <div className="flex-grow-1 d-flex flex-column">
+        <StepComponent form={form} setForm={setForm} />
+      </div>
 
       <div className="d-flex justify-content-between align-items-center mt-4 px-2">
         <button
