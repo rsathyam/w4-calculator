@@ -11,10 +11,10 @@ export default function StepIncomeDetails({ form, setForm }) {
   };
 
   return (
-    <div className="mb-3 d-flex flex-column justify-content-center h-100 gap-3">
-      <h2 className="h5 fw-semibold text-dark">Pay & Withholding</h2>
+    <div className="mb-3 d-flex flex-column justify-content-center h-100 gap-2">
+      <h2 className="h4 fw-bold text-dark text-center mb-4">Pay & Withholding</h2>
 
-      <div className="mb-3">
+      <div className="mb-2">
         <label htmlFor="filingStatus" className="form-label" title="Select your tax filing status">
           Filing Status
         </label>
@@ -30,7 +30,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="mb-3">
+      <div className="mb-2">
         <CurrencyInput
           label={
             <label
@@ -49,7 +49,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         />
       </div>
 
-      <div className="mb-3">
+      <div className="mb-2">
         <label htmlFor="payFrequency" className="form-label">
           Pay Frequency
         </label>
@@ -66,7 +66,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="form-check mb-3">
+      <div className="form-check mb-2">
         <input
           className="form-check-input"
           type="checkbox"
@@ -79,7 +79,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </label>
       </div>
 
-      <div className="form-check mb-3">
+      <div className="form-check mb-2">
         <input
           className="form-check-input"
           type="checkbox"
