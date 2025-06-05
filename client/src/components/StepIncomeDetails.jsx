@@ -46,10 +46,11 @@ export default function StepIncomeDetails({ form, setForm }) {
           onChange={(field, val) => setForm({ ...form, [field]: val })}
           helperText="Enter your total gross pay for the year, before taxes and deductions."
           icon={FaMoneyBillWave}
+          className="mb-0"
         />
       </div>
 
-      <div className="mb-2">
+      <div className="mb-3">
         <label htmlFor="payFrequency" className="form-label">
           Pay Frequency
         </label>
