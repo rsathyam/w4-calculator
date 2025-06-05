@@ -71,7 +71,7 @@ const steps = [
   return (
     <div className="max-w-6xl w-full mx-auto bg-white shadow-xl rounded-xl px-8 sm:px-12 py-12 space-y-6">
       <StepIndicator steps={steps} current={currentStep} />
-      <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
+      <StepComponent form={form} setForm={setForm} />
 
       <div className="flex justify-between items-center mt-6 px-4">
         <button
@@ -90,7 +90,15 @@ const steps = [
           >
             Next
           </button>
-        ) : null}
+        ) : (
+          <button
+            type="button"
+            onClick={handleDownload}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+          >
+            Download Completed W-4 Form (PDF)
+          </button>
+        )}
       </div>
     </div>
   );
