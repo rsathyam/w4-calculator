@@ -6,9 +6,8 @@ export default function StepIndicator({ steps, current }) {
       {steps.map((step, index) => (
         <div key={index} className="flex-fill text-center">
           <div
-            className={`rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold border
+            className={`step-indicator-circle rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold border
               ${index === current ? 'bg-primary text-white' : 'bg-light text-secondary'}`}
-            style={{ width: '2rem', height: '2rem' }}
           >
             {index + 1}
           </div>

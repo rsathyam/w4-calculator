@@ -43,8 +43,7 @@ export default function StepReview({ form }) {
           <iframe
             title="W-4 PDF Preview"
             src={`${pdfUrl}#navpanes=0`}
-            className="w-100"
-            style={{ height: '11in' }}
+            className="w-100 pdf-preview-frame"
           />
         </div>
       )}
