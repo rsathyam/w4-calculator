@@ -15,3 +15,15 @@ test('navigates between steps', async () => {
     screen.getByRole('heading', { name: /filing status/i })
   ).toBeInTheDocument();
 });
+
+test('shows download button on final step', async () => {
+  const { fillW4Template } = require('../utils/fillW4Template');
+  render(<StepperForm />);
+  // navigate to final step
+  while (screen.queryByRole('button', { name: /next/i })) {
+    await userEvent.click(screen.getByRole('button', { name: /next/i }));
+  }
+  const download = screen.getByRole('button', { name: /download completed w-4 form/i });
+  await userEvent.click(download);
+  expect(fillW4Template).toHaveBeenCalled();
+});

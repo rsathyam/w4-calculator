@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PaycheckPreview from './PaycheckPreview';
 import { fillW4Template } from './utils/fillW4Template';
 
-export default function StepReview({ form, onDownload }) {
+export default function StepReview({ form }) {
   const [pdfUrl, setPdfUrl] = useState(null);
 
   useEffect(() => {
@@ -49,15 +49,6 @@ export default function StepReview({ form, onDownload }) {
         </div>
       )}
 
-      <div className="pt-4">
-        <button
-          type="button"
-          onClick={onDownload}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"
-        >
-          Download Completed W-4 Form (PDF)
-        </button>
-      </div>
     </div>
   );
 }

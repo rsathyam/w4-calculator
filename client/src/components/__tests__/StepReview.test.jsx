@@ -1,5 +1,4 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import StepReview from '../StepReview';
 import { fillW4Template } from '../utils/fillW4Template';
 
@@ -19,14 +18,8 @@ beforeAll(() => {
   }
 });
 
-test('calls onDownload when button clicked', async () => {
-  const onDownload = jest.fn();
-  render(<StepReview form={{ grossPay: 1000 }} onDownload={onDownload} />);
-  await userEvent.click(screen.getByRole('button', { name: /download/i }));
-  expect(onDownload).toHaveBeenCalled();
-});
 
 test('generates pdf preview', async () => {
-  render(<StepReview form={{ grossPay: 1000 }} onDownload={() => {}} />);
+  render(<StepReview form={{ grossPay: 1000 }} />);
   await waitFor(() => expect(fillW4Template).toHaveBeenCalled());
 });
