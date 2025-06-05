@@ -9,6 +9,7 @@ export default function CurrencyInput({
   max = Number.MAX_SAFE_INTEGER,
   helperText = '',
   icon: Icon,
+  className = 'mb-3',
 }) {
   const [error, setError] = useState('');
   const [rawInput, setRawInput] = useState('');
@@ -56,7 +57,7 @@ export default function CurrencyInput({
   };
 
   return (
-    <div className="mb-3">
+    <div className={className}>
       <label className="form-label d-flex align-items-center gap-1">
         {Icon && <Icon className="text-secondary" />}
         {label}

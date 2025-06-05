@@ -22,31 +22,33 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
   }, [line1, line2, line3, line4, line5]);
 
   return (
-    <div className="mb-3">
-      <h2 className="h5 fw-semibold text-dark">Deductions</h2>
-
-      <CurrencyInput
-        label={<label htmlFor="itemizedDeductions" className="form-label">Estimated Itemized Deductions</label>}
-        name="itemizedDeductions"
-        value={form.itemizedDeductions}
-        onChange={(field, val) => setForm({ ...form, [field]: val })}
-        min={0}
-        max={1000000}
-        helperText="Amount of itemized deductions beyond the standard deduction"
-      />
-      <CurrencyInput
-        label={<label htmlFor="adjustmentDeductions" className="form-label">Other Adjustments to Income</label>}
-        name="adjustmentDeductions"
-        value={form.adjustmentDeductions}
-        onChange={(field, val) => setForm({ ...form, [field]: val })}
-        min={0}
-        max={1000000}
-        helperText="Other adjustments that reduce income"
-      />
-
-        <div className="p-3 bg-light border rounded">
-          <p className="small text-primary">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
-        </div>
+    <div className="mb-3 d-flex flex-column h-100">
+      <h2 className="h5 fw-semibold text-dark mb-3">Deductions</h2>
+      <div className="d-flex flex-column gap-3 flex-grow-1">
+        <CurrencyInput
+          className="mb-0"
+          label={<label htmlFor="itemizedDeductions" className="form-label">Estimated Itemized Deductions</label>}
+          name="itemizedDeductions"
+          value={form.itemizedDeductions}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={1000000}
+          helperText="Amount of itemized deductions beyond the standard deduction"
+        />
+        <CurrencyInput
+          className="mb-0"
+          label={<label htmlFor="adjustmentDeductions" className="form-label">Other Adjustments to Income</label>}
+          name="adjustmentDeductions"
+          value={form.adjustmentDeductions}
+          onChange={(field, val) => setForm({ ...form, [field]: val })}
+          min={0}
+          max={1000000}
+          helperText="Other adjustments that reduce income"
+        />
+      </div>
+      <div className="p-3 bg-light border rounded mt-auto">
+        <p className="small text-primary">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
+      </div>
     </div>
   );
 }
