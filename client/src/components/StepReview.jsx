@@ -40,7 +40,12 @@ export default function StepReview({ form, onDownload }) {
 
       {pdfUrl && (
         <div className="bg-white rounded shadow-sm border border-gray-200 p-4">
-          <iframe title="W-4 PDF Preview" src={pdfUrl} className="w-full h-96" />
+          <iframe
+            title="W-4 PDF Preview"
+            src={`${pdfUrl}#navpanes=0`}
+            className="w-full"
+            style={{ height: '11in' }}
+          />
         </div>
       )}
 
