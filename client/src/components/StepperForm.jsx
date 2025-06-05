@@ -16,11 +16,6 @@ import jsPDF from 'jspdf';
 export default function StepperForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const defaultForm = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    cityStateZip: '',
-    ssn: '',
     filingStatus: 'single',
     payFrequency: 'biweekly',
     grossPay: '',
@@ -62,7 +57,7 @@ export default function StepperForm() {
 
 const steps = [
   { title: 'Welcome', Component: StepIntro },
-  { title: 'Personal Info', Component: StepPersonalInfo },
+  { title: 'Filing Status', Component: StepPersonalInfo },
   { title: 'Pay & Withholding', Component: StepIncomeDetails },
   ...(form.multipleJobs
     ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]

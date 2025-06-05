@@ -4,11 +4,6 @@ import PaycheckPreview from './PaycheckPreview';
 
 export default function StepReview({ form, onDownload }) {
   const defaults = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    cityStateZip: '',
-    ssn: '',
     filingStatus: 'single',
     payFrequency: 'biweekly',
     grossPay: '',
