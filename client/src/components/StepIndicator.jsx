@@ -2,18 +2,16 @@ import React from 'react';
 
 export default function StepIndicator({ steps, current }) {
   return (
-    <div className="flex items-start justify-between mb-4 overflow-x-auto">
+    <div className="flex flex-col items-start space-y-3 mb-4">
       {steps.map((step, index) => (
-        <div key={index} className="flex-1 text-center">
+        <div key={index} className="flex items-center space-x-2">
           <div
-            className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center text-sm font-bold
+            className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold
               ${index === current ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'}`}
           >
             {index + 1}
           </div>
-          <p className={`mt-1 text-xs ${index === current ? 'text-blue-600 font-medium' : 'text-gray-500'}`}>
-            {step.title}
-          </p>
+          <p className={`text-sm ${index === current ? 'text-blue-600 font-medium' : 'text-gray-500'}`}>{step.title}</p>
         </div>
       ))}
     </div>

@@ -4,6 +4,7 @@ import StepperForm from '../StepperForm';
 
 jest.mock('jspdf', () => jest.fn());
 jest.mock('../utils/fillW4Template', () => ({ fillW4Template: jest.fn() }));
+jest.mock('../PdfPreview', () => () => <div>PDF Preview</div>);
 
 test('navigates between steps', async () => {
   render(<StepperForm />);

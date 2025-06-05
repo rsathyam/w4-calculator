@@ -7,6 +7,7 @@ import StepAdjustments from './StepAdjustments';
 import StepDeductionsWorksheet from './StepDeductionsWorksheet';
 import StepReview from './StepReview';
 import StepIntro from './StepIntro';
+import PdfPreview from './PdfPreview';
 import { fillW4Template } from './utils/fillW4Template';
 
 
@@ -74,28 +75,36 @@ const steps = [
 
   const StepComponent = steps[currentStep].Component;
   return (
-    <div className="max-w-6xl w-full mx-auto bg-white shadow-xl rounded-xl px-8 sm:px-12 py-12 space-y-6">
-      <StepIndicator steps={steps} current={currentStep} />
-      <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
+    <div className="max-w-6xl w-full mx-auto bg-white shadow-xl rounded-xl px-4 sm:px-8 py-8">
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="md:w-1/2 space-y-6">
+          <StepIndicator steps={steps} current={currentStep} />
+          <StepComponent form={form} setForm={setForm} onDownload={handleDownload} />
 
-      <div className="flex justify-between items-center mt-6 px-4">
-        <button
-          type="button"
-          onClick={goBack}
-          disabled={currentStep === 0}
-          className="px-4 py-2 rounded border border-gray-400 text-gray-700 disabled:opacity-30"
-        >
-          Back
-        </button>
-        {currentStep < steps.length - 1 ? (
-          <button
-            type="button"
-            onClick={goNext}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
-          >
-            Next
-          </button>
-        ) : null}
+          <div className="flex justify-between items-center mt-6">
+            <button
+              type="button"
+              onClick={goBack}
+              disabled={currentStep === 0}
+              className="px-4 py-2 rounded border border-gray-400 text-gray-700 disabled:opacity-30"
+            >
+              Back
+            </button>
+            {currentStep < steps.length - 1 ? (
+              <button
+                type="button"
+                onClick={goNext}
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+              >
+                Next
+              </button>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="md:w-1/2">
+          <PdfPreview form={form} />
+        </div>
       </div>
     </div>
   );
