@@ -33,17 +33,17 @@ export default function StepReview({ form }) {
     };
   }, [form]);
   return (
-    <div className="space-y-6">
-      <h2 className="text-lg font-semibold text-gray-800">Review & Download</h2>
+    <div className="mb-3">
+      <h2 className="h5 fw-semibold text-dark">Review & Download</h2>
 
       <PaycheckPreview formData={form} />
 
       {pdfUrl && (
-        <div className="bg-white rounded shadow-sm border border-gray-200 p-4">
+        <div className="bg-white rounded shadow border p-3">
           <iframe
             title="W-4 PDF Preview"
             src={`${pdfUrl}#navpanes=0`}
-            className="w-full"
+            className="w-100"
             style={{ height: '11in' }}
           />
         </div>

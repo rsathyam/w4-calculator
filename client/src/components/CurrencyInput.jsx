@@ -56,9 +56,9 @@ export default function CurrencyInput({
   };
 
   return (
-    <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700 mb-1 flex items-center gap-1">
-        {Icon && <Icon className="text-gray-500" />}
+    <div className="mb-3">
+      <label className="form-label d-flex align-items-center gap-1">
+        {Icon && <Icon className="text-secondary" />}
         {label}
       </label>
       <input
@@ -70,17 +70,13 @@ export default function CurrencyInput({
         onBlur={handleBlur}
         placeholder="$0"
         title={helperText}
-        className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 ${
-          error
-            ? 'border-red-500 focus:ring-red-500'
-            : 'border-gray-300 focus:ring-blue-500'
-        }`}
+        className={`form-control ${error ? 'is-invalid' : ''}`}
       />
       {helperText && !error && (
-        <p className="text-xs text-gray-500 mt-1">{helperText}</p>
+        <div className="form-text">{helperText}</div>
       )}
       {error && (
-        <p className="text-xs text-red-600 mt-1 font-medium">{error}</p>
+        <div className="invalid-feedback d-block">{error}</div>
       )}
     </div>
   );

@@ -9,12 +9,12 @@ export default function StepAdjustments({ form, setForm }) {
   };
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Adjustments</h2>
+    <div className="mb-3">
+      <h2 className="h5 fw-semibold text-dark">Adjustments</h2>
       <div>
         <label
           htmlFor="under17"
-          className="block text-sm font-medium text-gray-700"
+          className="form-label"
           title="Number of dependents under age 17"
         >
           Dependents Under 17
@@ -25,14 +25,14 @@ export default function StepAdjustments({ form, setForm }) {
           min="0"
           value={form.under17 || ''}
           onChange={(e) => handleNumberChange(e, 'under17')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
+          className="form-control"
           placeholder="0"
         />
       </div>
       <div>
         <label
           htmlFor="otherDependents"
-          className="block text-sm font-medium text-gray-700"
+          className="form-label"
           title="Dependents age 17 or older"
         >
           Other Dependents
@@ -43,7 +43,7 @@ export default function StepAdjustments({ form, setForm }) {
           min="0"
           value={form.otherDependents || ''}
           onChange={(e) => handleNumberChange(e, 'otherDependents')}
-          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded"
+          className="form-control"
           placeholder="0"
         />
       </div>
@@ -54,7 +54,7 @@ export default function StepAdjustments({ form, setForm }) {
           label={
             <label
               htmlFor="otherIncome"
-              className="block text-sm font-medium text-gray-700"
+              className="form-label"
               title="Other income you expect to receive this year"
             >
               Other Income (Annual)
@@ -76,7 +76,7 @@ export default function StepAdjustments({ form, setForm }) {
           label={
             <label
               htmlFor="pretaxDeductions"
-              className="block text-sm font-medium text-gray-700"
+              className="form-label"
               title="Annual 401(k), HSA, or other pre-tax amounts"
             >
               Pre-tax Contributions (Annual, e.g. 401(k), HSA)
@@ -97,7 +97,7 @@ export default function StepAdjustments({ form, setForm }) {
           label={
             <label
               htmlFor="extraWithholding"
-              className="block text-sm font-medium text-gray-700"
+              className="form-label"
               title="Any additional amount to withhold each paycheck"
             >
               Extra Withholding per Paycheck

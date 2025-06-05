@@ -22,11 +22,11 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
   }, [line1, line2, line3, line4, line5]);
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-800">Deductions</h2>
+    <div className="mb-3">
+      <h2 className="h5 fw-semibold text-dark">Deductions</h2>
 
       <CurrencyInput
-        label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated Itemized Deductions</label>}
+        label={<label htmlFor="itemizedDeductions" className="form-label">Estimated Itemized Deductions</label>}
         name="itemizedDeductions"
         value={form.itemizedDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -35,7 +35,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         helperText="Amount of itemized deductions beyond the standard deduction"
       />
       <CurrencyInput
-        label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other Adjustments to Income</label>}
+        label={<label htmlFor="adjustmentDeductions" className="form-label">Other Adjustments to Income</label>}
         name="adjustmentDeductions"
         value={form.adjustmentDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -44,8 +44,8 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         helperText="Other adjustments that reduce income"
       />
 
-        <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-          <p className="text-sm text-blue-800">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
+        <div className="p-3 bg-light border rounded">
+          <p className="small text-primary">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
         </div>
     </div>
   );
