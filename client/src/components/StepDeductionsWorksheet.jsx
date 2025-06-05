@@ -26,11 +26,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       <h2 className="text-lg font-semibold text-gray-800">Deductions</h2>
 
       <CurrencyInput
-        label={
-          <span title="Estimated total of your itemized deductions">
-            Estimated itemized deductions
-          </span>
-        }
+        label={<label htmlFor="itemizedDeductions" className="block text-sm font-medium text-gray-700">Estimated Itemized Deductions</label>}
         name="itemizedDeductions"
         value={form.itemizedDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -39,11 +35,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
         helperText="Amount of itemized deductions beyond the standard deduction"
       />
       <CurrencyInput
-        label={
-          <span title="Adjustments that reduce your taxable income">
-            Other adjustments to income
-          </span>
-        }
+        label={<label htmlFor="adjustmentDeductions" className="block text-sm font-medium text-gray-700">Other Adjustments to Income</label>}
         name="adjustmentDeductions"
         value={form.adjustmentDeductions}
         onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -53,7 +45,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       />
 
         <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-          <p className="text-sm text-blue-800">Total deductions (beyond standard deduction): ${line5.toLocaleString()}</p>
+          <p className="text-sm text-blue-800">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
         </div>
     </div>
   );

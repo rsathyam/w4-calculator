@@ -43,9 +43,9 @@ test('formats pretax deductions with dollar sign and commas', () => {
 
 test('shows default values when form is empty', () => {
   render(<StepReview form={{}} onDownload={() => {}} />);
-  expect(screen.getByText('filing Status')).toBeInTheDocument();
+  expect(screen.getByText('Filing Status')).toBeInTheDocument();
   expect(screen.getByText('single')).toBeInTheDocument();
-  expect(screen.getByText('pay Frequency')).toBeInTheDocument();
+  expect(screen.getByText('Pay Frequency')).toBeInTheDocument();
   expect(screen.getByText('biweekly')).toBeInTheDocument();
   expect(screen.getAllByText('$0').length).toBeGreaterThan(0);
 });

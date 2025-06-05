@@ -47,8 +47,33 @@ export default function StepReview({ form, onDownload }) {
   const entries = Object.entries(filteredForm);
 
   const labelMap = {
-    under17: 'Number of Dependents under 17',
+    under17: 'Number of Dependents Under 17',
   };
+
+  const smallWords = [
+    'and',
+    'or',
+    'the',
+    'a',
+    'an',
+    'in',
+    'on',
+    'with',
+    'from',
+    'to',
+    'per',
+    'of',
+  ];
+
+  const toTitleCase = (text) =>
+    text
+      .split(' ')
+      .map((word) =>
+        smallWords.includes(word.toLowerCase())
+          ? word.toLowerCase()
+          : word.charAt(0).toUpperCase() + word.slice(1)
+      )
+      .join(' ');
 
   return (
     <div className="space-y-6">
@@ -56,11 +81,11 @@ export default function StepReview({ form, onDownload }) {
 
       <div className="bg-white rounded shadow-sm border border-gray-200 p-6 space-y-2">
         {entries.map(([key, value]) => {
-          const label = labelMap[key] || key.replace(/([A-Z])/g, ' $1');
-          const labelClass = labelMap[key] ? '' : 'capitalize';
+          const rawLabel = labelMap[key] || key.replace(/([A-Z])/g, ' $1');
+          const label = toTitleCase(rawLabel);
           return (
             <div key={key} className="flex justify-between items-center text-sm text-gray-700">
-              <span className={`${labelClass} flex items-center gap-1`}>
+              <span className="flex items-center gap-1">
                 <FaRegFileAlt className="text-gray-500" />
                 {label}
               </span>
