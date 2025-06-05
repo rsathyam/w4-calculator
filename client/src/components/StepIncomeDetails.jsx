@@ -29,6 +29,23 @@ export default function StepIncomeDetails({ form, setForm }) {
         />
       </div>
 
+      <div>
+        <label htmlFor="payFrequency" className="block text-sm font-medium text-gray-700">
+          Pay Frequency
+        </label>
+        <select
+          id="payFrequency"
+          value={form.payFrequency || 'biweekly'}
+          onChange={(e) => setForm({ ...form, payFrequency: e.target.value })}
+          className="mt-1 block w-full rounded border border-gray-300 px-3 py-2 pr-8"
+        >
+          <option value="weekly">Weekly</option>
+          <option value="biweekly">Biweekly</option>
+          <option value="semimonthly">Semi-monthly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+      </div>
+
       <div className="flex items-center space-x-2">
         <input
           type="checkbox"
