@@ -30,8 +30,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="mb-2">
-        <CurrencyInput
+      <CurrencyInput
           label={
             <label
               htmlFor="grossPay"
@@ -48,9 +47,8 @@ export default function StepIncomeDetails({ form, setForm }) {
           icon={FaMoneyBillWave}
           className="mb-0"
         />
-      </div>
 
-      <div className="mb-3">
+      <div className="mb-4">
         <label htmlFor="payFrequency" className="form-label">
           Pay Frequency
         </label>
@@ -67,7 +65,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </select>
       </div>
 
-      <div className="form-check mb-2">
+      <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
@@ -80,7 +78,7 @@ export default function StepIncomeDetails({ form, setForm }) {
         </label>
       </div>
 
-      <div className="form-check mb-2">
+      <div className="form-check">
         <input
           className="form-check-input"
           type="checkbox"
