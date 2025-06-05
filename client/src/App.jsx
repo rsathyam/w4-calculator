@@ -1,6 +1,7 @@
 import React from 'react';
 import StepperForm from './components/StepperForm';
 import './index.css';
+import './components.css';
 import { inject } from '@vercel/analytics';
 inject();
 

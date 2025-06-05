@@ -68,8 +68,7 @@ const steps = [
   const StepComponent = steps[currentStep].Component;
   return (
     <div
-      className="container bg-white shadow rounded p-4 my-4 d-flex flex-column"
-      style={{ minHeight: '70vh' }}
+      className="container bg-white shadow rounded p-4 my-4 d-flex flex-column stepper-form-container"
     >
       <StepIndicator steps={steps} current={currentStep} />
       <div className="flex-grow-1 d-flex flex-column">

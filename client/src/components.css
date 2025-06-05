@@ -1,0 +1,12 @@
+.step-indicator-circle {
+  width: 2rem;
+  height: 2rem;
+}
+
+.stepper-form-container {
+  min-height: 70vh;
+}
+
+.pdf-preview-frame {
+  height: 11in;
+}
