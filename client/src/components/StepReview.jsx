@@ -43,9 +43,8 @@ export default function StepReview({ form, onDownload }) {
     return String(value) || '—';
   };
 
-  const entries = Object.entries({ ...defaults, ...form }).filter(
-    ([k]) => !['step2b', 'step4b'].includes(k),
-  );
+  const { step2b, step4b, ...filteredForm } = { ...defaults, ...form };
+  const entries = Object.entries(filteredForm);
 
   const labelMap = {
     under17: 'Number of Dependents under 17',
