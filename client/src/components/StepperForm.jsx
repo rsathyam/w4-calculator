@@ -71,7 +71,7 @@ const steps = [
       className="container bg-white shadow rounded p-4 my-4 d-flex flex-column stepper-form-container"
     >
       <StepIndicator steps={steps} current={currentStep} />
-      <div className="flex-grow-1 d-flex flex-column">
+      <div className="flex-grow-1 d-flex flex-column" style={{display: 'flex', justifyContent: 'center'}}>
         <StepComponent form={form} setForm={setForm} />
       </div>
 
