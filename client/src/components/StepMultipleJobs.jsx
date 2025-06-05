@@ -36,7 +36,11 @@ export default function StepMultipleJobs({ form, setForm }) {
       <div>
         <CurrencyInput
           label={
-            <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="grossPay"
+              className="block text-sm font-medium text-gray-700"
+              title="Income you earn from a second job"
+            >
               Income from second job
             </label>
           }
@@ -51,7 +55,11 @@ export default function StepMultipleJobs({ form, setForm }) {
       <div>
         <CurrencyInput
           label={
-            <label htmlFor="spouseIncome" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="spouseIncome"
+              className="block text-sm font-medium text-gray-700"
+              title="Your spouse's annual income"
+            >
               Spouse's income
             </label>
           }
@@ -64,7 +72,10 @@ export default function StepMultipleJobs({ form, setForm }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">
+        <label
+          className="block text-sm font-medium text-gray-700"
+          title="Total number of jobs in your household"
+        >
           Total household job count
         </label>
         <input

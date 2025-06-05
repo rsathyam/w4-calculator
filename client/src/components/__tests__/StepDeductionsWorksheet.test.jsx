@@ -3,5 +3,7 @@ import StepDeductionsWorksheet from '../StepDeductionsWorksheet';
 
 test('shows itemized deductions input', () => {
   render(<StepDeductionsWorksheet form={{}} setForm={() => {}} />);
-  expect(screen.getByText(/itemized deductions/i)).toBeInTheDocument();
+  expect(
+    screen.getByTitle(/itemized deductions beyond the standard/i)
+  ).toBeInTheDocument();
 });
