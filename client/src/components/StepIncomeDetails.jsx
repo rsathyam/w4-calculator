@@ -37,15 +37,7 @@ export default function StepIncomeDetails({ form, setForm }) {
       </div>
 
       <CurrencyInput
-          label={
-            <label
-              htmlFor="grossPay"
-              className="form-label fw-bold d-flex align-items-center gap-1"
-              title="Your yearly income before taxes"
-            >
-              Annual Gross Pay
-            </label>
-          }
+          label={<span className="fw-bold" title="Your yearly income before taxes">Annual Gross Pay</span>}
           name="grossPay"
           value={form.grossPay}
           onChange={(field, val) => setForm({ ...form, [field]: val })}

@@ -58,11 +58,12 @@ export default function CurrencyInput({
 
   return (
     <div className={className}>
-      <label className="form-label d-flex align-items-center gap-1">
+      <label htmlFor={name} className="form-label d-flex align-items-center gap-1">
         {Icon && <Icon className="text-secondary" />}
         {label}
       </label>
       <input
+        id={name}
         type="text"
         name={name}
         inputMode="numeric"

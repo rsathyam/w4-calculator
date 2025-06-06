@@ -39,11 +39,7 @@ export default function StepMultipleJobs({ form, setForm }) {
       <h2 className="h4 fw-bold text-dark text-center mb-4">Multiple Jobs Worksheet</h2>
       <div className="d-flex flex-column gap-3 flex-grow-1">
         <CurrencyInput
-          label={
-            <label htmlFor="grossPay" className="form-label">
-              Income from Second Job
-            </label>
-          }
+          label="Income from Second Job"
           name="secondJobIncome"
           value={form.secondJobIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
@@ -52,11 +48,7 @@ export default function StepMultipleJobs({ form, setForm }) {
           className="mb-0"
         />
         <CurrencyInput
-          label={
-            <label htmlFor="spouseIncome" className="form-label">
-              Spouse's Income
-            </label>
-          }
+          label="Spouse's Income"
           name="spouseIncome"
           value={form.spouseIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
