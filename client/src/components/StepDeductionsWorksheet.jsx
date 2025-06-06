@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CurrencyInput from './CurrencyInput';
-import { FaFileInvoiceDollar } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaChild, FaUserFriends } from 'react-icons/fa';
 import { calculateStep4b } from './utils/calculateStep4b';
 
 export default function StepDeductionsWorksheet({ form, setForm }) {
@@ -38,7 +38,12 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
           icon={FaFileInvoiceDollar}
         />
         <div>
-          <label htmlFor="under17" className="form-label" title="Number of dependents under age 17">
+          <label
+            htmlFor="under17"
+            className="form-label d-flex align-items-center gap-1"
+            title="Number of dependents under age 17"
+          >
+            <FaChild className="text-secondary" />
             Dependents Under 17
           </label>
           <input
@@ -46,13 +51,21 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
             type="number"
             min="0"
             value={form.under17 || ''}
-            onChange={(e) => setForm({ ...form, under17: e.target.value.replace(/[^0-9.]/g, '') })}
+            onChange={(e) =>
+              setForm({ ...form, under17: e.target.value.replace(/[^0-9.]/g, '') })
+            }
             className="form-control"
             placeholder="0"
           />
+          <div className="form-text">Number of qualifying children under 17.</div>
         </div>
         <div>
-          <label htmlFor="otherDependents" className="form-label" title="Dependents age 17 or older">
+          <label
+            htmlFor="otherDependents"
+            className="form-label d-flex align-items-center gap-1"
+            title="Dependents age 17 or older"
+          >
+            <FaUserFriends className="text-secondary" />
             Other Dependents
           </label>
           <input
@@ -60,10 +73,16 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
             type="number"
             min="0"
             value={form.otherDependents || ''}
-            onChange={(e) => setForm({ ...form, otherDependents: e.target.value.replace(/[^0-9.]/g, '') })}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                otherDependents: e.target.value.replace(/[^0-9.]/g, ''),
+              })
+            }
             className="form-control"
             placeholder="0"
           />
+          <div className="form-text">Number of dependents age 17 or older.</div>
         </div>
       </div>
       <div className="p-3 bg-light border rounded mt-auto">
