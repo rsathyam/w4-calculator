@@ -28,7 +28,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
       <div className="d-flex flex-column gap-3 flex-grow-1">
         <CurrencyInput
           className="mb-0"
-          label={<label htmlFor="itemizedDeductions" className="form-label">Estimated Itemized Deductions</label>}
+          label="Estimated Itemized Deductions"
           name="itemizedDeductions"
           value={form.itemizedDeductions}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
