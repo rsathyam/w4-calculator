@@ -85,7 +85,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
           <div className="form-text">Number of dependents age 17 or older.</div>
         </div>
       </div>
-      <div className="px-3 py-2 bg-light border rounded mt-3">
+      <div className="px-3 py-2 bg-light border rounded mt-5">
         <p className="small text-primary">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
       </div>
     </div>
