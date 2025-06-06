@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import CurrencyInput from './CurrencyInput';
+import { FaFileInvoiceDollar, FaSlidersH } from 'react-icons/fa';
 import { calculateStep4b } from './utils/calculateStep4b';
 
 export default function StepDeductionsWorksheet({ form, setForm }) {
@@ -23,7 +24,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
 
   return (
     <div className="mb-3 d-flex flex-column h-100">
-      <h2 className="h5 fw-semibold text-dark mb-3">Deductions</h2>
+      <h2 className="h4 fw-bold text-dark text-center mb-4">Deductions</h2>
       <div className="d-flex flex-column gap-3 flex-grow-1">
         <CurrencyInput
           className="mb-0"
@@ -34,6 +35,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
           min={0}
           max={1000000}
           helperText="Amount of itemized deductions beyond the standard deduction"
+          icon={FaFileInvoiceDollar}
         />
         <CurrencyInput
           className="mb-0"
@@ -44,6 +46,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
           min={0}
           max={1000000}
           helperText="Other adjustments that reduce income"
+          icon={FaSlidersH}
         />
       </div>
       <div className="p-3 bg-light border rounded mt-auto">
