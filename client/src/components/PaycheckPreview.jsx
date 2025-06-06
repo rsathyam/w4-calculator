@@ -74,11 +74,11 @@ export default function PaycheckPreview({ formData }) {
       {!preview?.error && (
         <>
           <p>
-            <strong>Withholding per Paycheck:</strong>{' '}
+            <strong>Federal Tax Withholding per Paycheck:</strong>{' '}
             <span className="text-success">${preview?.withholdingPerPaycheck}</span>
           </p>
           <p>
-            <strong>Annual Withholding:</strong>{' '}
+            <strong>Annual Federal Tax Withholding:</strong>{' '}
             <span className="text-success">${preview?.annualWithholding}</span>
           </p>
           {preview?.note && (
