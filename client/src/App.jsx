@@ -1,5 +1,6 @@
 import React from 'react';
 import StepperForm from './components/StepperForm';
+import Feedback from './components/Feedback';
 import './index.css';
 import './components.css';
 import { inject } from '@vercel/analytics';
@@ -12,6 +13,7 @@ function App() {
         W-4 Calculator & Form Generator
       </h1>
       <StepperForm />
+      <Feedback />
     </div>
   );
 }
