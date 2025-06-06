@@ -43,7 +43,6 @@ export default function StepIncomeDetails({ form, setForm }) {
               className="form-label fw-bold d-flex align-items-center gap-1"
               title="Your yearly income before taxes"
             >
-              <FaMoneyBillWave className="text-secondary" />
               Annual Gross Pay
             </label>
           }
