@@ -84,7 +84,7 @@ export default function StepMultipleJobs({ form, setForm }) {
         </div>
       </div>
       {form.step2b && (
-        <div className="p-3 bg-light border rounded mt-auto">
+        <div className="p-3 bg-light border rounded mt-5">
           <p className="small text-primary">
             Estimated Extra Withholding per Paycheck{' '}
             <strong>${form.step2b.line4}</strong>
