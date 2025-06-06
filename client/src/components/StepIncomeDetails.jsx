@@ -1,6 +1,6 @@
 import React from 'react';
 import CurrencyInput from './CurrencyInput';
-import {FaMoneyBillWave} from 'react-icons/fa';
+import { FaMoneyBillWave, FaUser, FaCalendarAlt } from 'react-icons/fa';
 
 export default function StepIncomeDetails({ form, setForm }) {
   const handleMoneyChange = (e, key) => {
@@ -15,7 +15,12 @@ export default function StepIncomeDetails({ form, setForm }) {
       <h2 className="h4 fw-bold text-dark text-center mb-4">Pay & Withholding</h2>
 
       <div className="mb-2">
-        <label htmlFor="filingStatus" className="form-label" title="Select your tax filing status">
+        <label
+          htmlFor="filingStatus"
+          className="form-label fw-bold d-flex align-items-center gap-1"
+          title="Select your tax filing status"
+        >
+          <FaUser className="text-secondary" />
           Filing Status
         </label>
         <select
@@ -28,15 +33,17 @@ export default function StepIncomeDetails({ form, setForm }) {
           <option value="married">Married Filing Jointly</option>
           <option value="head">Head of Household</option>
         </select>
+        <div className="form-text">Choose the filing status that applies to you.</div>
       </div>
 
       <CurrencyInput
           label={
             <label
               htmlFor="grossPay"
-              className="block text-sm font-medium text-gray-700"
+              className="form-label fw-bold d-flex align-items-center gap-1"
               title="Your yearly income before taxes"
             >
+              <FaMoneyBillWave className="text-secondary" />
               Annual Gross Pay
             </label>
           }
@@ -49,7 +56,11 @@ export default function StepIncomeDetails({ form, setForm }) {
         />
 
       <div className="mb-4">
-        <label htmlFor="payFrequency" className="form-label">
+        <label
+          htmlFor="payFrequency"
+          className="form-label fw-bold d-flex align-items-center gap-1"
+        >
+          <FaCalendarAlt className="text-secondary" />
           Pay Frequency
         </label>
         <select
@@ -63,6 +74,7 @@ export default function StepIncomeDetails({ form, setForm }) {
           <option value="semimonthly">Semi-monthly</option>
           <option value="monthly">Monthly</option>
         </select>
+        <div className="form-text">How often you receive a paycheck.</div>
       </div>
 
       <div className="form-check">
