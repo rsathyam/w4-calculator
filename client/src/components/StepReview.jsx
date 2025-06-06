@@ -34,7 +34,7 @@ export default function StepReview({ form }) {
   }, [form]);
   return (
     <div className="mb-3">
-      <h2 className="h5 fw-semibold text-dark">Review & Download</h2>
+      <h2 className="h4 fw-bold text-dark text-center mb-4">Review & Download</h2>
 
       <PaycheckPreview formData={form} />
 
