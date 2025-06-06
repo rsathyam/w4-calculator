@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import CurrencyInput from './CurrencyInput';
-import { FaFileInvoiceDollar, FaSlidersH } from 'react-icons/fa';
+import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { calculateStep4b } from './utils/calculateStep4b';
 
 export default function StepDeductionsWorksheet({ form, setForm }) {
@@ -37,17 +37,34 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
           helperText="Amount of itemized deductions beyond the standard deduction"
           icon={FaFileInvoiceDollar}
         />
-        <CurrencyInput
-          className="mb-0"
-          label={<label htmlFor="adjustmentDeductions" className="form-label">Other Adjustments to Income</label>}
-          name="adjustmentDeductions"
-          value={form.adjustmentDeductions}
-          onChange={(field, val) => setForm({ ...form, [field]: val })}
-          min={0}
-          max={1000000}
-          helperText="Other adjustments that reduce income"
-          icon={FaSlidersH}
-        />
+        <div>
+          <label htmlFor="under17" className="form-label" title="Number of dependents under age 17">
+            Dependents Under 17
+          </label>
+          <input
+            id="under17"
+            type="number"
+            min="0"
+            value={form.under17 || ''}
+            onChange={(e) => setForm({ ...form, under17: e.target.value.replace(/[^0-9.]/g, '') })}
+            className="form-control"
+            placeholder="0"
+          />
+        </div>
+        <div>
+          <label htmlFor="otherDependents" className="form-label" title="Dependents age 17 or older">
+            Other Dependents
+          </label>
+          <input
+            id="otherDependents"
+            type="number"
+            min="0"
+            value={form.otherDependents || ''}
+            onChange={(e) => setForm({ ...form, otherDependents: e.target.value.replace(/[^0-9.]/g, '') })}
+            className="form-control"
+            placeholder="0"
+          />
+        </div>
       </div>
       <div className="p-3 bg-light border rounded mt-auto">
         <p className="small text-primary">Total Deductions (Beyond Standard Deduction): ${line5.toLocaleString()}</p>
