@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
 import CurrencyInput from './CurrencyInput';
+import {
+  FaBriefcase,
+  FaUserFriends,
+  FaListOl,
+} from 'react-icons/fa';
 import { calculateStep2b } from './utils/calculateStep2b';
 
 
@@ -30,55 +35,56 @@ export default function StepMultipleJobs({ form, setForm }) {
   ]);
 
   return (
-    <div className="mb-3">
-      <h2 className="h5 fw-semibold text-primary">Multiple Jobs Worksheet</h2>
-
-      <div className="mb-3">
+    <div className="mb-3 d-flex flex-column h-100">
+      <h2 className="h4 fw-bold text-dark text-center mb-4">Multiple Jobs Worksheet</h2>
+      <div className="d-flex flex-column gap-3 flex-grow-1">
         <CurrencyInput
           label={
-            <label htmlFor="grossPay" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="grossPay" className="form-label">
               Income from Second Job
             </label>
           }
           name="secondJobIncome"
           value={form.secondJobIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
-          className="form-control"
           helperText="Enter your income from a second job, if you have one"
+          icon={FaBriefcase}
+          className="mb-0"
         />
-      </div>
-
-      <div className="mb-3">
         <CurrencyInput
           label={
-            <label htmlFor="spouseIncome" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="spouseIncome" className="form-label">
               Spouse's Income
             </label>
           }
           name="spouseIncome"
           value={form.spouseIncome}
           onChange={(field, val) => setForm({ ...form, [field]: val })}
-          className="form-control"
           helperText="Enter your spouse's income"
+          icon={FaUserFriends}
+          className="mb-0"
         />
+        <div>
+          <label
+            htmlFor="jobCount"
+            className="form-label d-flex align-items-center gap-1"
+          >
+            <FaListOl className="text-secondary" />
+            Total Household Job Count
+          </label>
+          <input
+            id="jobCount"
+            type="number"
+            name="jobCount"
+            value={form.jobCount || ''}
+            onChange={(e) => setForm({ ...form, jobCount: e.target.value })}
+            className="form-control"
+            placeholder="e.g. 2"
+          />
+        </div>
       </div>
-
-      <div className="mb-3">
-        <label className="form-label">
-          Total Household Job Count
-        </label>
-        <input
-          type="number"
-          name="jobCount"
-          value={form.jobCount || ''}
-          onChange={(e) => setForm({ ...form, jobCount: e.target.value })}
-          className="form-control"
-          placeholder="e.g. 2"
-        />
-      </div>
-
       {form.step2b && (
-        <div className="p-3 bg-light border rounded mb-3">
+        <div className="p-3 bg-light border rounded mt-auto">
           <p className="small text-primary">
             Estimated Extra Withholding per Paycheck{' '}
             <strong>${form.step2b.line4}</strong>
