@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-jest.mock('@vercel/analytics', () => ({ inject: jest.fn() }));
+jest.mock('@vercel/analytics', () => ({ inject: jest.fn(), track: jest.fn() }));
 jest.mock('jspdf', () => jest.fn());
 
 test('renders app header', () => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StepIndicator from './StepIndicator';
 import StepMultipleJobs from './StepMultipleJobs';
 import StepIncomeDetails from './StepIncomeDetails';
@@ -7,6 +7,7 @@ import StepDeductionsWorksheet from './StepDeductionsWorksheet';
 import StepReview from './StepReview';
 import StepIntro from './StepIntro';
 import { fillW4Template } from './utils/fillW4Template';
+import { track } from '@vercel/analytics';
 
 
 import jsPDF from 'jspdf';
@@ -66,6 +67,10 @@ const steps = [
 ];
 
   const StepComponent = steps[currentStep].Component;
+
+  useEffect(() => {
+    track('step_view', { step: steps[currentStep].title });
+  }, [currentStep]);
   return (
     <div
       className="container bg-white shadow rounded p-4 my-4 d-flex flex-column stepper-form-container"

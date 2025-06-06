@@ -4,6 +4,7 @@ import StepperForm from '../StepperForm';
 
 jest.mock('jspdf', () => jest.fn());
 jest.mock('../utils/fillW4Template', () => ({ fillW4Template: jest.fn() }));
+jest.mock('@vercel/analytics', () => ({ track: jest.fn() }));
 
 test('navigates between steps', async () => {
   render(<StepperForm />);
@@ -14,6 +15,16 @@ test('navigates between steps', async () => {
   expect(
     screen.getByRole('heading', { name: /pay & withholding/i })
   ).toBeInTheDocument();
+});
+
+test('logs step views when navigating', async () => {
+  const { track } = require('@vercel/analytics');
+  render(<StepperForm />);
+  await screen.findByText(/welcome to the w-4 calculator/i);
+  expect(track).toHaveBeenCalledWith('step_view', { step: 'Welcome' });
+  await userEvent.click(screen.getByText(/next/i));
+  await screen.findByRole('heading', { name: /pay & withholding/i });
+  expect(track).toHaveBeenCalledWith('step_view', { step: 'Pay & Withholding' });
 });
 
 test('shows download button on final step', async () => {
