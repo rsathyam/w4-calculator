@@ -15,6 +15,45 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
+/* Enhanced Button Styling */
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.35);
+  background: linear-gradient(135deg, #0b5ed7 0%, #0a58ca 100%);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #5c636a 100%);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.25);
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(108, 117, 125, 0.35);
+  background: linear-gradient(135deg, #5c636a 0%, #495057 100%);
+  color: white;
+}
+
+.btn:disabled {
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0.6;
+}
+
 .pdf-preview-frame {
   height: 11in;
 }
