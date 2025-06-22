@@ -27,8 +27,12 @@ const faqs = [
   }
 ];
 
-export default function FAQ() {
+export default function FAQ({ isVisible = true }) {
   const [openIndex, setOpenIndex] = useState(null);
+
+  if (!isVisible) {
+    return null;
+  }
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);

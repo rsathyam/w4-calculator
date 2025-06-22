@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import StepperForm from './components/StepperForm';
-import Feedback from './components/Feedback';
+import Footer from './components/Footer';
 import FAQ from './components/FAQ';
 import './index.css';
 import './components.css';
@@ -8,6 +8,18 @@ import { inject } from '@vercel/analytics';
 inject();
 
 function App() {
+  const [showFAQ, setShowFAQ] = useState(false);
+  const faqRef = useRef(null);
+
+  const scrollToFAQ = () => {
+    setShowFAQ(true);
+    setTimeout(() => {
+      if (faqRef.current) {
+        faqRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-vh-100 bg-light py-5">
       <div className="container-fluid px-3">
@@ -35,11 +47,13 @@ function App() {
               </div>
             </header>
             <StepperForm />
-            <FAQ />
-            <Feedback />
+            <div ref={faqRef}>
+              <FAQ isVisible={showFAQ} />
+            </div>
           </div>
         </div>
       </div>
+      <Footer onFAQClick={scrollToFAQ} />
     </div>
   );
 }

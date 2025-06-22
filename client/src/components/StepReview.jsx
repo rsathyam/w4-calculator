@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PaycheckPreview from './PaycheckPreview';
+import FAQ from './FAQ';
 import { fillW4Template } from './utils/fillW4Template';
 
 export default function StepReview({ form }) {
@@ -47,6 +48,8 @@ export default function StepReview({ form }) {
           />
         </div>
       )}
+
+      <FAQ />
 
     </div>
   );
