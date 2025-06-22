@@ -1,8 +1,14 @@
 import React from 'react';
 
 export default function StepIndicator({ steps, current }) {
+  const progressPercentage = Math.round((current / (steps.length - 1)) * 100);
+  
   return (
     <div className="mb-4 position-relative">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <span className="small text-muted">Progress</span>
+        <span className="small fw-bold text-primary">{progressPercentage}% Complete</span>
+      </div>
       <div className="d-flex justify-content-between align-items-center position-relative">
         {steps.map((step, index) => (
           <div key={index} className="flex-fill text-center position-relative">

@@ -26,6 +26,13 @@ function App() {
                 <span className="badge bg-info px-3 py-2">✓ Instant PDF</span>
                 <span className="badge bg-warning text-dark px-3 py-2">✓ Secure & Private</span>
               </div>
+              <div className="alert alert-info d-flex align-items-center justify-content-center mb-4" role="alert">
+                <div className="text-center">
+                  <strong>🚀 Quick Start:</strong> Most users complete their W-4 in under 5 minutes!
+                  <br />
+                  <small className="text-muted">No signup required • Works on all devices • Instant results</small>
+                </div>
+              </div>
             </header>
             <StepperForm />
             <FAQ />

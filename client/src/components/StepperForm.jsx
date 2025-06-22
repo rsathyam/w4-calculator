@@ -6,6 +6,8 @@ import StepAdjustments from './StepAdjustments';
 import StepDeductionsWorksheet from './StepDeductionsWorksheet';
 import StepReview from './StepReview';
 import StepIntro from './StepIntro';
+import QuickTip from './QuickTips';
+import TimeEstimate from './TimeEstimate';
 import { fillW4Template } from './utils/fillW4Template';
 import { track } from '@vercel/analytics';
 
@@ -74,6 +76,8 @@ const steps = [
   return (
     <div className="bg-white d-flex flex-column stepper-form-container">
       <StepIndicator steps={steps} current={currentStep} />
+      <TimeEstimate currentStep={currentStep} totalSteps={steps.length} />
+      <QuickTip currentStep={currentStep} />
       <div className="flex-grow-1 d-flex flex-column" style={{display: 'flex', justifyContent: 'center'}}>
         <StepComponent form={form} setForm={setForm} />
       </div>
