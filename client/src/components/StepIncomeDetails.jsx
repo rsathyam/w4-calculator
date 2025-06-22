@@ -12,7 +12,7 @@ export default function StepIncomeDetails({ form, setForm }) {
 
   return (
     <div className="mb-3 d-flex flex-column justify-content-center h-100 gap-2">
-      <h2 className="h4 fw-bold text-dark text-center mb-4">Pay & Withholding</h2>
+      <h2 className="h2 fw-bold text-dark text-center mb-4">Pay & Withholding</h2>
 
       <div className="mb-2">
         <label

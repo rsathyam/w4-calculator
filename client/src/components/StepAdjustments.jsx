@@ -6,7 +6,7 @@ export default function StepAdjustments({ form, setForm }) {
 
   return (
     <div className="mb-3">
-      <h2 className="h4 fw-bold text-dark text-center mb-4">Adjustments</h2>
+      <h2 className="h2 fw-bold text-dark text-center mb-4">Adjustments</h2>
 
 
 

@@ -36,7 +36,7 @@ export default function StepMultipleJobs({ form, setForm }) {
 
   return (
     <div className="mb-3 d-flex flex-column h-100">
-      <h2 className="h4 fw-bold text-dark text-center mb-4">Multiple Jobs Worksheet</h2>
+      <h2 className="h2 fw-bold text-dark text-center mb-4">Multiple Jobs Worksheet</h2>
       <div className="d-flex flex-column gap-3 flex-grow-1">
         <CurrencyInput
           label="Income from Second Job"
