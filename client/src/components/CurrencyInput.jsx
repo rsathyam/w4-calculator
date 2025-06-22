@@ -34,10 +34,25 @@ export default function CurrencyInput({
   const handleChange = (e) => {
     const input = e.target.value;
     setRawInput(input);
+    
+    // Check for empty input first
+    if (input.trim() === '') {
+      setError('');
+      onChange(name, 0);
+      return;
+    }
+    
+    // Check for invalid characters (letters, special chars except $ and ,)
+    const hasInvalidChars = /[a-zA-Z]/.test(input);
+    if (hasInvalidChars) {
+      setError('Please enter a valid dollar amount (numbers only)');
+      return;
+    }
+    
     const numeric = parseCurrency(input);
 
-    if (isNaN(numeric)) {
-      onChange(name, 0);
+    if (isNaN(numeric) || numeric < 0) {
+      setError('Please enter a valid dollar amount');
       return;
     }
 
