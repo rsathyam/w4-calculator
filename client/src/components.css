@@ -5,6 +5,14 @@
 
 .stepper-form-container {
   min-height: 70vh;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.stepper-form-container:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
 .pdf-preview-frame {
