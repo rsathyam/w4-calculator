@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaLightbulb, FaTimes } from 'react-icons/fa';
+import { FaLightbulb } from 'react-icons/fa';
 
 const tips = [
   {

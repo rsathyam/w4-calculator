@@ -15,10 +15,10 @@ function App() {
           <div className="col-12 col-lg-10 col-xl-8">
             <header className="text-center mb-5">
               <h1 className="display-5 fw-bold text-primary mb-3">
-                Free W-4 Calculator 2024 | IRS Tax Withholding Form Generator
+                Free W-4 Calculator & Form Generator
               </h1>
               <p className="lead text-muted mb-4 px-3">
-                Calculate your federal tax withholding with precision and generate your completed W-4 form in minutes. Free, secure, and IRS-compliant.
+                Calculate federal tax withholding and generate your W-4 form in minutes.
               </p>
               <div className="d-flex flex-wrap justify-content-center gap-3 mb-4">
                 <span className="badge bg-success px-3 py-2">✓ 100% Free</span>
