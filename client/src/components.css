@@ -1,6 +1,50 @@
+/* Enhanced Step Indicator */
 .step-indicator-circle {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  border: 2px solid #dee2e6;
+  background: white;
+  color: #6c757d;
+}
+
+.step-indicator-circle.active {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  color: white;
+  border-color: #0d6efd;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+  transform: scale(1.1);
+}
+
+.step-indicator-circle.completed {
+  background: linear-gradient(135deg, #198754 0%, #157347 100%);
+  color: white;
+  border-color: #198754;
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.3);
+}
+
+.step-indicator-progress-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #dee2e6;
+  z-index: 1;
+  transform: translateY(-50%);
+  margin: 0 1.25rem;
+}
+
+.step-indicator-progress-line.completed {
+  background: linear-gradient(90deg, #198754 0%, #20c997 100%);
 }
 
 .stepper-form-container {
