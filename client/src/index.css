@@ -1,5 +1,6 @@
 /* Global tweaks */
 body {
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background-color: #f9fafb;
+  line-height: 1.6;
 }
