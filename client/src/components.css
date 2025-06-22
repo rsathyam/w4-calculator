@@ -53,10 +53,19 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.3s ease;
+  padding: 2.5rem;
 }
 
 .stepper-form-container:hover {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Enhanced Layout Spacing */
+@media (max-width: 768px) {
+  .stepper-form-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
 }
 
 /* Enhanced Button Styling */

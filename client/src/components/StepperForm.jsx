@@ -72,15 +72,13 @@ const steps = [
     track('step_view', { step: steps[currentStep].title });
   }, [currentStep]);
   return (
-    <div
-      className="container bg-white shadow rounded p-4 my-4 d-flex flex-column stepper-form-container"
-    >
+    <div className="bg-white d-flex flex-column stepper-form-container">
       <StepIndicator steps={steps} current={currentStep} />
       <div className="flex-grow-1 d-flex flex-column" style={{display: 'flex', justifyContent: 'center'}}>
         <StepComponent form={form} setForm={setForm} />
       </div>
 
-      <div className="d-flex justify-content-between align-items-center mt-4 px-2">
+      <div className="d-flex justify-content-between align-items-center mt-5">
         <button
           type="button"
           onClick={goBack}
