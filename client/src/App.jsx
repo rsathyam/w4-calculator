@@ -5,6 +5,7 @@ import FAQ from './components/FAQ';
 import './index.css';
 import './components.css';
 import { inject } from '@vercel/analytics';
+ 
 inject();
 
 function App() {
@@ -45,11 +46,14 @@ function App() {
                   <small className="text-muted">No signup required • Works on all devices • Instant results</small>
                 </div>
               </div>
+              
             </header>
             <StepperForm />
+            
             <div ref={faqRef}>
               <FAQ isVisible={showFAQ} />
             </div>
+            
           </div>
         </div>
       </div>
