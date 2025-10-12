@@ -5,7 +5,7 @@ import FAQ from './components/FAQ';
 import './index.css';
 import './components.css';
 import { inject } from '@vercel/analytics';
- 
+import SimpleAd from './components/SimpleAd';
 inject();
 
 function App() {
@@ -48,6 +48,14 @@ function App() {
               </div>
               
             </header>
+            <div className="my-4 d-flex justify-content-center">
+              <SimpleAd
+                client="ca-pub-6800890145159662"
+                slot="5906208691"
+                style={{ minHeight: 100, width: '100%' }}
+                className="w-100"
+              />
+            </div>
             <StepperForm />
             
             <div ref={faqRef}>
