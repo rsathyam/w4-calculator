@@ -48,26 +48,34 @@ function App() {
               </div>
               
             </header>
-            <div className="my-4 d-flex justify-content-center">
-              <SimpleAd
-                client="ca-pub-6800890145159662"
-                slot="5906208691"
-                style={{ minHeight: 100, width: '100%' }}
-                className="w-100"
-              />
+            <div className="my-4">
+              <div className="text-muted text-uppercase small mb-2" aria-hidden="true">Advertisement</div>
+              <div className="d-flex justify-content-center">
+                <SimpleAd
+                  client="ca-pub-6800890145159662"
+                  slot="5906208691"
+                  style={{ minHeight: 100, width: '100%' }}
+                  className="w-100"
+                />
+              </div>
+              <span className="visually-hidden">Advertisement unit</span>
             </div>
             <StepperForm />
             
             <div ref={faqRef}>
               <FAQ isVisible={showFAQ} />
             </div>
-            <div className="my-5 d-flex justify-content-center">
-              <SimpleAd
-                client="ca-pub-6800890145159662"
-                slot="3042681139"
-                style={{ minHeight: 100, width: '100%' }}
-                className="w-100"
-              />
+            <div className="my-5">
+              <div className="text-muted text-uppercase small mb-2" aria-hidden="true">Advertisement</div>
+              <div className="d-flex justify-content-center">
+                <SimpleAd
+                  client="ca-pub-6800890145159662"
+                  slot="3042681139"
+                  style={{ minHeight: 100, width: '100%' }}
+                  className="w-100"
+                />
+              </div>
+              <span className="visually-hidden">Advertisement unit</span>
             </div>
             
           </div>
