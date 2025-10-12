@@ -61,6 +61,14 @@ function App() {
             <div ref={faqRef}>
               <FAQ isVisible={showFAQ} />
             </div>
+            <div className="my-5 d-flex justify-content-center">
+              <SimpleAd
+                client="ca-pub-6800890145159662"
+                slot="3042681139"
+                style={{ minHeight: 100, width: '100%' }}
+                className="w-100"
+              />
+            </div>
             
           </div>
         </div>
