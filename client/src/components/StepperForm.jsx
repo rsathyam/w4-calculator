@@ -12,7 +12,7 @@ import { fillW4Template } from './utils/fillW4Template';
 import { track } from '@vercel/analytics';
 
 
-import jsPDF from 'jspdf';
+// jsPDF import removed - using pdf-lib instead via fillW4Template
 
 
 export default function StepperForm() {
@@ -46,7 +46,7 @@ export default function StepperForm() {
       const pdfBytes = await fillW4Template(form);
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
-      
+
       const link = document.createElement('a');
       link.href = url;
       link.download = 'w4_form.pdf';
@@ -57,28 +57,29 @@ export default function StepperForm() {
     }
   };
 
-const steps = [
-  { title: 'Welcome', Component: StepIntro },
-  { title: 'Pay & Withholding', Component: StepIncomeDetails },
-  ...(form.multipleJobs
-    ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
-    : []),
-  { title: 'Deductions', Component: StepDeductionsWorksheet },
-  { title: 'Adjustments', Component: StepAdjustments },
-  { title: 'Review & Download', Component: StepReview },
-];
+  const steps = [
+    { title: 'Welcome', Component: StepIntro },
+    { title: 'Pay & Withholding', Component: StepIncomeDetails },
+    ...(form.multipleJobs
+      ? [{ title: 'Multiple Jobs Worksheet', Component: StepMultipleJobs }]
+      : []),
+    { title: 'Deductions', Component: StepDeductionsWorksheet },
+    { title: 'Adjustments', Component: StepAdjustments },
+    { title: 'Review & Download', Component: StepReview },
+  ];
 
   const StepComponent = steps[currentStep].Component;
 
   useEffect(() => {
     track('step_view', { step: steps[currentStep].title });
-  }, [currentStep]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStep, steps.length]);
   return (
     <div className="bg-white d-flex flex-column stepper-form-container">
       <StepIndicator steps={steps} current={currentStep} />
       <TimeEstimate currentStep={currentStep} totalSteps={steps.length} />
       <QuickTip currentStep={currentStep} />
-      <div className="flex-grow-1 d-flex flex-column" style={{display: 'flex', justifyContent: 'center'}}>
+      <div className="flex-grow-1 d-flex flex-column" style={{ display: 'flex', justifyContent: 'center' }}>
         <StepComponent form={form} setForm={setForm} />
       </div>
 

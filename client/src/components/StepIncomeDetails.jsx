@@ -3,13 +3,6 @@ import CurrencyInput from './CurrencyInput';
 import { FaMoneyBillWave, FaUser, FaCalendarAlt } from 'react-icons/fa';
 
 export default function StepIncomeDetails({ form, setForm }) {
-  const handleMoneyChange = (e, key) => {
-    const raw = e.target.value.replace(/[^0-9.]/g, '');
-    if (raw === '' || /^\d*\.?\d{0,2}$/.test(raw)) {
-      setForm({ ...form, [key]: raw });
-    }
-  };
-
   return (
     <div className="mb-3 d-flex flex-column justify-content-center h-100 gap-2">
       <h2 className="h2 fw-bold text-dark text-center mb-4">Pay & Withholding</h2>
@@ -37,14 +30,14 @@ export default function StepIncomeDetails({ form, setForm }) {
       </div>
 
       <CurrencyInput
-          label={<span className="fw-bold" title="Your yearly income before taxes">Annual Gross Pay</span>}
-          name="grossPay"
-          value={form.grossPay}
-          onChange={(field, val) => setForm({ ...form, [field]: val })}
-          helperText="Enter your total gross pay for the year, before taxes and deductions."
-          icon={FaMoneyBillWave}
-          className="mb-0"
-        />
+        label={<span className="fw-bold" title="Your yearly income before taxes">Annual Gross Pay</span>}
+        name="grossPay"
+        value={form.grossPay}
+        onChange={(field, val) => setForm({ ...form, [field]: val })}
+        helperText="Enter your total gross pay for the year, before taxes and deductions."
+        icon={FaMoneyBillWave}
+        className="mb-0"
+      />
 
       <div className="mb-4">
         <label

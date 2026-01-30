@@ -24,7 +24,6 @@ export default function PaycheckPreview({ formData }) {
         const otherDependents = Math.max(0, parseInt(data.otherDependents || 0));
         const deductions = Math.max(0, parseFloat(data.deductions || 0));
         const extra = Math.max(0, parseFloat(data.extraWithholding || 0));
-        const multipleJobs = !!data.multipleJobs;
         const otherIncome = Math.max(0, parseFloat(data.otherIncome || 0));
         const pretax = Math.max(0, parseFloat(data.pretaxDeductions || 0));
 

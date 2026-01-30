@@ -19,7 +19,6 @@ export async function fillW4Template(formData) {
     form.getCheckBox('topmostSubform[0].Page1[0].c1_2[0]').check();
   }
 
-  const under17 = formData.under17 || 0;
   const income = calculateIncome(
     formData.payFrequency || 'biweekly',
     Math.max(0, parseFloat(formData.grossPay)),

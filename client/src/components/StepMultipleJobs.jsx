@@ -32,6 +32,8 @@ export default function StepMultipleJobs({ form, setForm }) {
     form.secondJobIncome,
     form.spouseIncome,
     form.jobCount,
+    form.step2b,
+    setForm,
   ]);
 
   return (

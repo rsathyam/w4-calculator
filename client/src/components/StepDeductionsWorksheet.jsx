@@ -20,7 +20,7 @@ export default function StepDeductionsWorksheet({ form, setForm }) {
     ) {
       setForm((f) => ({ ...f, step4b, deductions: line5 }));
     }
-  }, [line1, line2, line3, line4, line5]);
+  }, [line1, line2, line3, line4, line5, form.deductions, form.step4b, setForm]);
 
   return (
     <div className="mb-3 d-flex flex-column h-100">
