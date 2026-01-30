@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PaycheckPreview from './PaycheckPreview';
 import FAQ from './FAQ';
+import TaxSoftwareRecommendations from './TaxSoftwareRecommendations';
+import EmailCapture from './EmailCapture';
+import PremiumFeatures from './PremiumFeatures';
 import { fillW4Template } from './utils/fillW4Template';
 
 export default function StepReview({ form }) {
@@ -49,8 +52,14 @@ export default function StepReview({ form }) {
         </div>
       )}
 
+      {/* Monetization Components */}
+      <TaxSoftwareRecommendations />
+      <EmailCapture />
+      <PremiumFeatures />
+
       <FAQ />
 
     </div>
   );
 }
+
