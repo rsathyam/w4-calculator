@@ -14,8 +14,8 @@ const faqs = [
     answer: "Absolutely! Our calculator includes the Multiple Jobs Worksheet to help you calculate the correct withholding when you have more than one job or your spouse also works."
   },
   {
-    question: "What's new in the 2024 W-4 form?",
-    answer: "The 2024 W-4 form maintains the same structure as recent years, with sections for personal information, multiple jobs, dependents, and other adjustments. Tax brackets and standard deductions have been updated for inflation."
+    question: "What's new in the 2026 W-4 form?",
+    answer: "The 2026 W-4 form maintains the same structure as recent years, with sections for personal information, multiple jobs, dependents, and other adjustments. Tax brackets and standard deductions have been updated for inflation—the standard deduction is now $16,100 for single filers and $32,200 for married filing jointly."
   },
   {
     question: "Do I need to fill out a new W-4 every year?",
@@ -44,7 +44,7 @@ export default function FAQ({ isVisible = true }) {
         <h2 className="h3 fw-bold text-dark mb-3">Frequently Asked Questions</h2>
         <p className="text-muted">Common questions about W-4 forms and tax withholding</p>
       </div>
-      
+
       <div className="accordion" id="faqAccordion">
         {faqs.map((faq, index) => (
           <div key={index} className="accordion-item border-0 mb-3 shadow-sm rounded">

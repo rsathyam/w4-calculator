@@ -21,14 +21,14 @@ export async function fillW4Template(formData) {
 
   const under17 = formData.under17 || 0;
   const income = calculateIncome(
-      formData.payFrequency || 'biweekly',
-      Math.max(0, parseFloat(formData.grossPay)), 
-      Math.max(0, parseFloat(formData.otherIncome || 0)),
-      Math.max(0, parseFloat(formData.pretaxDeductions || 0))
+    formData.payFrequency || 'biweekly',
+    Math.max(0, parseFloat(formData.grossPay)),
+    Math.max(0, parseFloat(formData.otherIncome || 0)),
+    Math.max(0, parseFloat(formData.pretaxDeductions || 0))
   );
   const filingStatus = (formData.filingStatus || 'single').toLowerCase();
   const dependentIncomeLimit = (filingStatus === "married") ? 400000 : 200000;
-  const under17Amount = formData.under17 * 2000;
+  const under17Amount = formData.under17 * 2200;
   const otherDependentsAmount = formData.otherDependents * 500;
   const totalDependentsAmount = under17Amount + otherDependentsAmount;
   if (income <= dependentIncomeLimit) {
@@ -36,7 +36,7 @@ export async function fillW4Template(formData) {
     form.getTextField('topmostSubform[0].Page1[0].Step3_ReadOrder[0].f1_07[0]').setText(otherDependentsAmount.toString());
     form.getTextField('topmostSubform[0].Page1[0].f1_09[0]').setText(totalDependentsAmount.toString());
   }
- 
+
   //Set Other Income
   const otherIncome = formData.otherIncome || 0;
   form.getTextField('topmostSubform[0].Page1[0].f1_10[0]').setText(otherIncome.toString());
@@ -44,7 +44,7 @@ export async function fillW4Template(formData) {
   //Set Deductions
   const deductions = formData.deductions || 0;
   form.getTextField('topmostSubform[0].Page1[0].f1_11[0]').setText(deductions.toString());
-  
+
   //Set Extra Withholding
   const extraWithholding = formData.extraWithholding || 0;
   form.getTextField('topmostSubform[0].Page1[0].f1_12[0]').setText(extraWithholding.toString());

@@ -39,7 +39,7 @@ export default function PaycheckPreview({ formData }) {
         if (adjustedIncome <= dependentIncomeLimit) {
           totalTax = Math.max(
             0,
-            totalTax - (under17 * 2000 + otherDependents * 500)
+            totalTax - (under17 * 2200 + otherDependents * 500)
           );
         }
 

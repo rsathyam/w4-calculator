@@ -6,7 +6,7 @@ export default function StepIntro({ onNext }) {
       <h2 className="h2 fw-bold text-dark text-center mb-4">Welcome to the W-4 Calculator</h2>
       <p className="fs-5">
         This tool helps you accurately complete the official IRS W-4 form based on your income, dependents,
-        deductions, and withholding preferences. It uses 2025 tax brackets and works entirely in your browser.
+        deductions, and withholding preferences. It uses 2026 tax brackets and works entirely in your browser.
       </p>
       <ul className="ps-3 fs-5">
         <li>✅ Preview your tax withholding per paycheck</li>

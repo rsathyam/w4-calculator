@@ -3,9 +3,9 @@ export function calculateStep4b({
   itemizedDeductions = 0,
   adjustmentDeductions = 0,
 }) {
-  // Standard deduction amounts for the 2025 tax year
-  // Source: Form W-4 (2025) deductions worksheet
-  const stdMap = { single: 15000, married: 30000, head: 22500 };
+  // Standard deduction amounts for the 2026 tax year
+  // Source: IRS inflation adjustments for 2026
+  const stdMap = { single: 16100, married: 32200, head: 24150 };
   const line1 = parseFloat(itemizedDeductions) || 0;
   const line2 = stdMap[filingStatus] || stdMap.single;
   const line3 = Math.max(0, line1 - line2);
